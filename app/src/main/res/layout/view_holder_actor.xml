@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/view_holder_layout_margin"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/imageView_ironman"
+        android:layout_width="@dimen/view_holder_actor_dimen"
+        android:layout_height="@dimen/view_holder_actor_dimen"
+        android:src="@drawable/ironman" />
+    <TextView
+        android:id="@+id/name_actor"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_holder_name_actor_dimen"   />
+
+</LinearLayout>

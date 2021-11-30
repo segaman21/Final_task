@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="margin_card_film">10dp</dimen>
+    <dimen name="width_card_film">170dp</dimen>
+    <dimen name="height_card_film">260dp</dimen>
+    <dimen name="first_star_start_dimen">8dp</dimen>
+    <dimen name="first_star_top_dimen">4dp</dimen>
+    <dimen name="second_star_start_dimen">2dp</dimen>
+    <dimen name="third_star_start_dimen">2dp</dimen>
+    <dimen name="four_star_start_dimen">2dp</dimen>
+    <dimen name="five_star_start_dimen">2dp</dimen>
+    <dimen name="reviews_start_dimen">6dp</dimen>
+    <dimen name="reviews_top_dimen">4dp</dimen>
+    <dimen name="reviews_text_size">6sp</dimen>
+    <dimen name="genre_text_size">6sp</dimen>
+    <dimen name="genre_description_dimen">150dp</dimen>
+    <dimen name="description_genre_start_dimen">8dp</dimen>
+    <dimen name="description_genre_top_dimen">225dp</dimen>
+    <dimen name="tv_age_start_dimen">6dp</dimen>
+    <dimen name="tv_age_top_dimen">8dp</dimen>
+    <dimen name="tv_age_padding">4dp</dimen>
+    <dimen name="tv_age_text_size">10sp</dimen>
+    <dimen name="is_liked_start_dimen">110dp</dimen>
+    <dimen name="is_liked_top_dimen">13dp</dimen>
+    <dimen name="is_liked_end_dimen">8dp</dimen>
+    <dimen name="name_movie_start_dimen">8dp</dimen>
+    <dimen name="size_of_movie_name">12sp</dimen>
+    <dimen name="size_of_movie_time">6sp</dimen>
+    <dimen name="movie_time_padding">4dp</dimen>
+
+    <dimen name="movie_details_image_size">0dp</dimen>
+    <dimen name="movie_details_image_back_start_dimen">16dp</dimen>
+    <dimen name="movie_details_image_back_top_dimen">60dp</dimen>
+    <dimen name="movie_details_tv_age_top_dimen">150dp</dimen>
+    <dimen name="movie_details_tv_age_start_dimen">16dp</dimen>
+    <dimen name="movie_details_tv_age_padding">4dp</dimen>
+    <dimen name="movie_details_name_width">250dp</dimen>
+    <dimen name="movie_details_name_end_margin">150dp</dimen>
+    <dimen name="movie_details_name_size">40sp</dimen>
+    <dimen name="movie_details_first_star_start_dimen">10dp</dimen>
+    <dimen name="movie_details_second_star_start_dimen">4dp</dimen>
+    <dimen name="movie_details_second_star_top_dimen">10dp</dimen>
+    <dimen name="movie_details_third_star_start_dimen">4dp</dimen>
+    <dimen name="movie_details_third_star_top_dimen">10dp</dimen>
+    <dimen name="movie_details_four_star_start_dimen">4dp</dimen>
+    <dimen name="movie_details_four_star_top_dimen">10dp</dimen>
+    <dimen name="movie_details_five_star_start_dimen">4dp</dimen>
+    <dimen name="movie_details_five_star_top_dimen">10dp</dimen>
+    <dimen name="movie_details_reviews_start_dimen">8dp</dimen>
+    <dimen name="movie_details_reviews_top_dimen">6dp</dimen>
+    <dimen name="movie_details_story_line_top_dimen">20dp</dimen>
+    <dimen name="movie_details_story_top_dimen">20dp</dimen>
+    <dimen name="movie_details_story_start_dimen">16dp</dimen>
+    <dimen name="movie_details_story_extra_dimen">4dp</dimen>
+    <dimen name="movie_details_cast_title_start_dimen">16dp</dimen>
+    <dimen name="movie_details_cast_title_top_dimen">24dp</dimen>
+    <dimen name="movie_details_cast_title_end_dimen">16dp</dimen>
+    <dimen name="movie_details_cast_title_size">16sp</dimen>
+    <dimen name="movie_details_cast_top_dimen">24dp</dimen>
+    <dimen name="movie_details_land_tv_age_top_dimen">250dp</dimen>
+    <dimen name="movie_details_land_name_start_margin">16dp</dimen>
+    <dimen name="movie_details_land_name_end_margin">150dp</dimen>
+    <dimen name="movie_details_land_cast_top_dimen">8dp</dimen>
+
+    <dimen name="movie_list_image_start_dimen">20dp</dimen>
+    <dimen name="movie_list_image_top_dimen">53dp</dimen>
+    <dimen name="movie_list_text_label_start_dimen">8dp</dimen>
+    <dimen name="movie_list_text_label_top_dimen">50dp</dimen>
+    <dimen name="movie_list_recycle_start_dimen">10dp</dimen>
+    <dimen name="movie_list_recycle_top_dimen">20dp</dimen>
+
+    <dimen name="view_holder_layout_margin">20dp</dimen>
+    <dimen name="view_holder_actor_dimen">80dp</dimen>
+    <dimen name="view_holder_name_actor_dimen">50dp</dimen>
+    <dimen name="view_holder_actor_margin_end">60dp</dimen>
+    <dimen name="view_holder_land_actor_dimen">160dp</dimen>
+    <dimen name="view_holder_text_dimen">0dp</dimen>
+
+</resources>

@@ -1,0 +1,25 @@
+<resources>
+
+    <string name="name_exception">Check internet connection and restart</string>
+    <string name="minimum_age_16">+16</string>
+    <string name="minimum_age_13">+13</string>
+    <string name="reviews_film_details">reviews</string>
+
+    <string name="app_name">Best Application</string>
+    <string name="back_page">Back</string>
+    <string name="age_card_description">13+</string>
+    <string name="name_film_in_card">Avengers: End Game</string>
+    <string name="genres">Action, Adventure, Fantasy</string>
+    <string name="description_genre_card">Action, Adventure, Drama</string>
+    <string name="how_many_reviews_label">125 reviews</string>
+    <string name="story_title">Storyline</string>
+    <string name="cast_title">Cast</string>
+    <string name="actor_ironman">Robert Downey Jr.</string>
+    <string name="actor_america">Chris Evans</string>
+    <string name="actor_hulk">Mark Ruffalo</string>
+    <string name="actor_thor">Chris Hemsworth</string>
+    <string name="movies_list">Movies list</string>
+    <string name="movies_time">137 min</string>
+
+    <string name="what_storyline">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos actions and restore balance to the universe.</string>
+</resources>
