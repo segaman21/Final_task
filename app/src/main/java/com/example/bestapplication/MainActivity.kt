@@ -2,8 +2,10 @@ package com.example.bestapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.bestapplication.movielist.FragmentMoviesList
+import com.example.bestapplication.ui.movie_list.FragmentMoviesList
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

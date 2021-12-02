@@ -22,6 +22,8 @@
         app:layout_constraintStart_toStartOf="@+id/imageView_ironman"
         app:layout_constraintTop_toBottomOf="@+id/imageView_ironman"
         app:layout_constraintEnd_toEndOf="@+id/imageView_ironman"
+        android:textColor="@color/white"
+        android:layout_marginBottom="@dimen/name_actor_dimen"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

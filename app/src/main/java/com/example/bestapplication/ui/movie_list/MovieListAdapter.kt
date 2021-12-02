@@ -1,9 +1,8 @@
-package com.example.bestapplication.movielist
+package com.example.bestapplication.ui.movie_list
 
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bestapplication.R
 import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.data.model.MoviePreview
 import com.example.bestapplication.databinding.FragmentMovieBinding

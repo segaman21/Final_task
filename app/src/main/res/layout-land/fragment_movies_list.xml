@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/background_gray">
 
     <ImageView
@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/movie_list_image_start_dimen"
-        android:layout_marginTop="@dimen/movie_list_image_top_dimen"
+        android:layout_marginTop="@dimen/movie_list_image_start_dimen"
         android:src="@drawable/combined_shape"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/movie_list_text_label_start_dimen"
-        android:layout_marginTop="@dimen/movie_list_text_label_top_dimen"
+        android:layout_marginTop="@dimen/movie_list_image_start_dimen"
         android:text="@string/movies_list"
         android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -30,9 +30,11 @@
         android:id="@+id/movies_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/movie_list_recycle_start_dimen"
-        android:layout_marginTop="@dimen/movie_list_recycle_top_dimen"
-        android:layout_marginEnd="@dimen/movie_list_recycle_start_dimen"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         tools:listitem="@layout/fragment_movie" />
 </androidx.constraintlayout.widget.ConstraintLayout>

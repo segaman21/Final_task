@@ -1,4 +1,4 @@
-package com.example.bestapplication.movielist
+package com.example.bestapplication.ui.movie_list
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -8,12 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.bestapplication.moviedetails.FragmentMoviesDetails
+import com.example.bestapplication.ui.movie_details.FragmentMoviesDetails
 import com.example.bestapplication.R
 import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.data.model.MoviePreview
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies_list.*
 
+@AndroidEntryPoint
 class FragmentMoviesList : Fragment(), MovieListAdapter.Callback {
 
     private var genreList = listOf<Genre>()

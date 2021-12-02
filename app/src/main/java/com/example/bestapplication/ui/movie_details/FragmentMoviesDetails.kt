@@ -1,4 +1,4 @@
-package com.example.bestapplication.moviedetails
+package com.example.bestapplication.ui.movie_details
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -15,9 +15,10 @@ import com.example.bestapplication.R
 import com.example.bestapplication.data.model.Actor
 import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.data.model.MovieFull
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies_details.*
 
-
+@AndroidEntryPoint
 class FragmentMoviesDetails : Fragment() {
     private val viewModel by viewModels<MovieDetailsViewModel>()
     override fun onCreateView(
@@ -58,7 +59,7 @@ class FragmentMoviesDetails : Fragment() {
             .placeholder(R.drawable.arrow)
             .centerCrop()
             .into(imageView_title)
-        textView_age.text = if (movie.minimumAge) R.string.minimum_age_16.toString() else  R.string.minimum_age_13.toString()
+        textView_age.text = if (movie.minimumAge) "+16" else "+13"
         tv_title_movie.text = movie.title
         reviews_film?.text = "${movie.numberOfRatings} reviews"
         textView_story.text = movie.overview

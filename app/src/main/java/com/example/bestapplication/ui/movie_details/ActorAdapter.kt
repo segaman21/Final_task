@@ -1,4 +1,4 @@
-package com.example.bestapplication.moviedetails
+package com.example.bestapplication.ui.movie_details
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,6 @@ import com.example.bestapplication.R
 import com.example.bestapplication.data.model.Actor
 
 class ActorAdapter(private val items: List<Actor>) : RecyclerView.Adapter<ActorViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorViewHolder {
         val view = LayoutInflater.from(parent.context)

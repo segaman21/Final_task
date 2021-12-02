@@ -6,7 +6,7 @@ import com.example.bestapplication.data.model.MovieFull
 import com.example.bestapplication.data.model.MovieList
 import retrofit2.http.*
 
-interface MoviesApi {
+interface MoviesService {
     @Headers(
         "Content-type: application/json"
     )

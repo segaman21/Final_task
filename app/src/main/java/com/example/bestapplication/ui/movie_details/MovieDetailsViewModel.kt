@@ -1,4 +1,4 @@
-package com.example.bestapplication.moviedetails
+package com.example.bestapplication.ui.movie_details
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -6,16 +6,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.bestapplication.data.model.*
-import com.example.bestapplication.data.network.MoviesRepository
+import com.example.bestapplication.data.repository.MoviesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
+import javax.inject.Inject
 
-
-class MovieDetailsViewModel : ViewModel() {
+@HiltViewModel
+class MovieDetailsViewModel @Inject constructor(private val repository: MoviesRepository) :
+    ViewModel() {
     private val _moviesLiveData = MutableLiveData<MovieFull>()
     val moviesLiveData: LiveData<MovieFull> get() = _moviesLiveData
     private val _actorsLiveData = MutableLiveData<List<Actor>>()
     val actorsLiveData: LiveData<List<Actor>> get() = _actorsLiveData
-    private val repository = MoviesRepository()
+
 
     fun getMovies(context: Context, movieId: Int) {
         viewModelScope.launch {

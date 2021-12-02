@@ -1,4 +1,4 @@
-package com.example.bestapplication.movielist
+package com.example.bestapplication.ui.movie_list
 
 import android.annotation.SuppressLint
 import android.widget.ImageView
