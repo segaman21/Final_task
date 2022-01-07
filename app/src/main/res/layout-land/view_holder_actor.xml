@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
-        android:id="@+id/imageView_ironman"
+        android:id="@+id/image_actor"
         android:layout_width="@dimen/view_holder_land_actor_dimen"
         android:layout_height="@dimen/view_holder_land_actor_dimen"
         android:src="@drawable/ironman"
@@ -19,9 +19,9 @@
         android:layout_width="@dimen/view_holder_text_dimen"
         android:layout_height="wrap_content"
         android:text="@string/actor_ironman"
-        app:layout_constraintStart_toStartOf="@+id/imageView_ironman"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_ironman"
-        app:layout_constraintEnd_toEndOf="@+id/imageView_ironman"
+        app:layout_constraintStart_toStartOf="@+id/image_actor"
+        app:layout_constraintTop_toBottomOf="@+id/image_actor"
+        app:layout_constraintEnd_toEndOf="@+id/image_actor"
         android:textColor="@color/white"
         android:layout_marginBottom="@dimen/name_actor_dimen"
         />

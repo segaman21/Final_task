@@ -7,7 +7,7 @@ import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.data.model.MoviePreview
 import com.example.bestapplication.databinding.FragmentMovieBinding
 
-class MovieListAdapter(private val moviesList: List<MoviePreview>, val genres: List<Genre>) :
+class MovieListAdapter(private val moviesList: List<MoviePreview>, private val genres: List<Genre>) :
     RecyclerView.Adapter<MovieListViewHolder>() {
     lateinit var callback: Callback
 

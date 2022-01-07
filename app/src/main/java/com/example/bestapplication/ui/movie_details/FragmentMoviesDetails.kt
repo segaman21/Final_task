@@ -15,19 +15,23 @@ import com.example.bestapplication.R
 import com.example.bestapplication.data.model.Actor
 import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.data.model.MovieFull
+import com.example.bestapplication.databinding.FragmentMoviesDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies_details.*
 
 @AndroidEntryPoint
 class FragmentMoviesDetails : Fragment() {
     private val viewModel by viewModels<MovieDetailsViewModel>()
+    private var _binding: FragmentMoviesDetailsBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_movies_details, container, false)
-
+    ): View {
+        _binding = FragmentMoviesDetailsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,6 +39,11 @@ class FragmentMoviesDetails : Fragment() {
         initListeners()
         initObservers(movieId)
         viewModel.getActors(requireActivity(), movieId!!)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     private fun initObservers(movieId: Int?) {
@@ -58,12 +67,12 @@ class FragmentMoviesDetails : Fragment() {
             .load(posterUrl)
             .placeholder(R.drawable.arrow)
             .centerCrop()
-            .into(imageView_title)
-        textView_age.text = if (movie.minimumAge) "+16" else "+13"
-        tv_title_movie.text = movie.title
-        reviews_film?.text = "${movie.numberOfRatings} reviews"
-        textView_story.text = movie.overview
-        textView_genre.text = setGenres(movie.genres)
+            .into(binding.imageViewTitle)
+        binding.textViewAge.text = if (movie.minimumAge) "+16" else "+13"
+        binding.tvTitleMovie.text = movie.title
+        binding.reviewsFilm.text = "${movie.numberOfRatings} reviews"
+        binding.textViewStory.text = movie.overview
+        binding.textViewGenre.text = setGenres(movie.genres)
 
         val movieDetailsAdapter = actors?.let { ActorAdapter(it) }
         recycler_name.adapter = movieDetailsAdapter
@@ -87,29 +96,29 @@ class FragmentMoviesDetails : Fragment() {
 
     private fun setRate(rate: Float) {
         if (rate >= 2F) {
-            setRedStar(imageView_star_one)
+            setRedStar(binding.imageViewStarOne)
         } else {
-            setGrayStar(imageView_star_one)
+            setGrayStar(binding.imageViewStarOne)
         }
         if (rate >= 4F) {
-            setRedStar(imageView_star_two)
+            setRedStar(binding.imageViewStarTwo)
         } else {
-            setGrayStar(imageView_star_two)
+            setGrayStar(binding.imageViewStarTwo)
         }
         if (rate >= 6F) {
-            setRedStar(imageView_star_three)
+            setRedStar(binding.imageViewStarThree)
         } else {
-            setGrayStar(imageView_star_three)
+            setGrayStar(binding.imageViewStarThree)
         }
         if (rate >= 8F) {
-            setRedStar(imageView_star_four)
+            setRedStar(binding.imageViewStarFour)
         } else {
-            setGrayStar(imageView_star_four)
+            setGrayStar(binding.imageViewStarFour)
         }
         if (rate == 10F) {
-            setRedStar(imageView_star_five)
+            setRedStar(binding.imageViewStarFive)
         } else {
-            setGrayStar(imageView_star_five)
+            setGrayStar(binding.imageViewStarFive)
         }
 
     }
