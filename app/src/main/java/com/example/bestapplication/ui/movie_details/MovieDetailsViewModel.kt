@@ -18,6 +18,8 @@ class MovieDetailsViewModel @Inject constructor(private val repository: MoviesRe
     val moviesLiveData: LiveData<MovieFull> get() = _moviesLiveData
     private val _actorsLiveData = MutableLiveData<List<Actor>>()
     val actorsLiveData: LiveData<List<Actor>> get() = _actorsLiveData
+    private val _sharedLink: ShareLink? = null
+    val sharedLink get() = _sharedLink
 
 
     fun getMovies(context: Context, movieId: Int) {
@@ -29,6 +31,12 @@ class MovieDetailsViewModel @Inject constructor(private val repository: MoviesRe
     fun getActors(context: Context, movieId: Int) {
         viewModelScope.launch {
             _actorsLiveData.value = repository.getActors(context, movieId)
+        }
+    }
+
+    fun getLink(movieId: Int) {
+        viewModelScope.launch {
+            _sharedLink = repository.getShareLink(movieId)
         }
     }
 

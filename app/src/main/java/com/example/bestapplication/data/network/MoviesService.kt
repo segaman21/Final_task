@@ -1,9 +1,6 @@
 package com.example.bestapplication.data.network
 
-import com.example.bestapplication.data.model.ActorList
-import com.example.bestapplication.data.model.GenreList
-import com.example.bestapplication.data.model.MovieFull
-import com.example.bestapplication.data.model.MovieList
+import com.example.bestapplication.data.model.*
 import retrofit2.http.*
 
 interface MoviesService {
@@ -45,4 +42,11 @@ interface MoviesService {
         @Query("api_key") key: String,
         @Query("language") lang: String
     ): MovieFull
+
+    @GET("movie/{movie_id}/watch/providers")
+    suspend fun getShareLink(
+        @Path("movie_id") movieId: Int,
+        @Query("api_key") key: String,
+        @Query("language") lang: String
+    ): ResultShareLink
 }

@@ -40,7 +40,7 @@ class FragmentMoviesDetails : Fragment() {
         initListeners()
         initObservers(movieId)
         viewModel.getActors(requireActivity(), movieId!!)
-        // binding.shareButton?.setOnClickListener { shareMovieDetails(movieId) }
+        binding.shareButton?.setOnClickListener { shareMovieDetails(movieId) }
 
     }
 
@@ -150,12 +150,13 @@ class FragmentMoviesDetails : Fragment() {
         }
     }
 
-//    private fun shareMovieDetails(movieId: Int?) {
-//        val intent = Intent(Intent.ACTION_SEND)
-//        intent.type = "text/plain"
-//        intent.putExtra(Intent.EXTRA_TEXT, "https://api.themoviedb.org/3/$movieId")
-//        startActivity(intent)
-//    }
+    private fun shareMovieDetails(movieId: Int) {
+        val sharedLink=viewModel.getLink(movieId)
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_TEXT, "$sharedLink")
+        startActivity(intent)
+    }
 
     companion object {
         private const val MOVIE_ID = "movie"

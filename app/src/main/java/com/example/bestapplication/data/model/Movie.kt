@@ -1,8 +1,6 @@
 package com.example.bestapplication.data.model
 
 import android.os.Parcelable
-import com.example.bestapplication.data.model.Actor
-import com.example.bestapplication.data.model.Genre
 import kotlinx.android.parcel.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
