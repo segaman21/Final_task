@@ -1,6 +1,7 @@
 package com.example.bestapplication.ui.movie_details
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +40,8 @@ class FragmentMoviesDetails : Fragment() {
         initListeners()
         initObservers(movieId)
         viewModel.getActors(requireActivity(), movieId!!)
+        // binding.shareButton?.setOnClickListener { shareMovieDetails(movieId) }
+
     }
 
     override fun onDestroyView() {
@@ -65,7 +68,7 @@ class FragmentMoviesDetails : Fragment() {
         val posterUrl = "https://image.tmdb.org/t/p/original/${movie.backdrop}"
         Glide.with(requireActivity())
             .load(posterUrl)
-            .placeholder(R.drawable.arrow)
+            .placeholder(R.drawable.ic_download)
             .centerCrop()
             .into(binding.imageViewTitle)
         binding.textViewAge.text = if (movie.minimumAge) "+16" else "+13"
@@ -146,6 +149,13 @@ class FragmentMoviesDetails : Fragment() {
             requireActivity().onBackPressed()
         }
     }
+
+//    private fun shareMovieDetails(movieId: Int?) {
+//        val intent = Intent(Intent.ACTION_SEND)
+//        intent.type = "text/plain"
+//        intent.putExtra(Intent.EXTRA_TEXT, "https://api.themoviedb.org/3/$movieId")
+//        startActivity(intent)
+//    }
 
     companion object {
         private const val MOVIE_ID = "movie"

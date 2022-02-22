@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/color_bg"
+
     android:layout_margin="@dimen/margin_card_film">
 
     <ImageView
@@ -71,21 +71,22 @@
         android:text="@string/how_many_reviews_label"
         android:textAllCaps="true"
         android:textSize="@dimen/reviews_text_size"
-        android:textColor="@color/text_color"
         android:textStyle="bold"
+        android:textColor="@color/text_color_red"
         android:layout_marginStart="@dimen/reviews_start_dimen"
         android:layout_marginTop="@dimen/reviews_top_dimen"
         app:layout_constraintStart_toEndOf="@+id/five_star"
         app:layout_constraintTop_toBottomOf="@id/genre_description" />
+
     <TextView
         android:id="@+id/genre_description"
         android:layout_width="@dimen/genre_description_dimen"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/description_genre_start_dimen"
+        android:layout_marginTop="@dimen/description_genre_top_dimen"
         android:text="@string/description_genre_card"
         android:textColor="@color/text_color_red"
         android:textSize="@dimen/genre_text_size"
-        android:layout_marginStart="@dimen/description_genre_start_dimen"
-        android:layout_marginTop="@dimen/description_genre_top_dimen"
         app:layout_constraintStart_toStartOf="@+id/image_view_mask"
         app:layout_constraintTop_toTopOf="@+id/image_view_mask" />
 
@@ -95,10 +96,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/tv_age_start_dimen"
         android:layout_marginTop="@dimen/tv_age_top_dimen"
-        android:background="@drawable/bg_age"
         android:padding="@dimen/tv_age_padding"
         android:text="@string/age_card_description"
-        android:textColor="@color/white"
+        android:textColor="@color/text_color_red"
         android:textSize="@dimen/tv_age_text_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/image_view_mask"
@@ -119,14 +119,13 @@
         android:id="@+id/movie_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/name_film_in_card"
-        android:textColor="@color/white"
-        android:layout_marginStart="@dimen/name_movie_start_dimen"
-        android:textStyle="bold"
-        android:textSize="@dimen/size_of_movie_name"
         android:paddingBottom="@dimen/movie_time_padding"
+        android:text="@string/name_film_in_card"
+        android:textSize="@dimen/size_of_movie_name"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view_mask" />
+        app:layout_constraintTop_toBottomOf="@+id/image_view_mask"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

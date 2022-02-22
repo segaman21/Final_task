@@ -7,12 +7,15 @@ import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.data.model.MoviePreview
 import com.example.bestapplication.databinding.FragmentMovieBinding
 
-class MovieListAdapter(private val moviesList: List<MoviePreview>, private val genres: List<Genre>) :
-    RecyclerView.Adapter<MovieListViewHolder>() {
+class MovieListAdapter(
+    private val moviesList: List<MoviePreview>,
+    private val genres: List<Genre>
+) : RecyclerView.Adapter<MovieListViewHolder>()
+{
     lateinit var callback: Callback
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
-        val view =FragmentMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val view = FragmentMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieListViewHolder(view)
     }
 

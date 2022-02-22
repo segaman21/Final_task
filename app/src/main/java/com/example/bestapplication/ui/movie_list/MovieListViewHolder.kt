@@ -42,7 +42,7 @@ class MovieListViewHolder(private val binding: FragmentMovieBinding) : RecyclerV
         Glide.with(itemView)
             .load(posterUrl)
             .centerCrop()
-            .placeholder(R.drawable.arrow)
+            .placeholder(R.drawable.ic_download)
             .into(binding.imageViewMask)
     }
 

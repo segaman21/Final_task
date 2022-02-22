@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bgColor">#191926</color>
     <color name="text_color">#6D6D80</color>
-    <color name="text_color_red">#FF3466</color>
+    <color name="text_color_red">#BF3466</color>
     <color name="color_bg">#222232</color>
 </resources>
 
