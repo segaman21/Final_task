@@ -1,6 +1,5 @@
 package com.example.bestapplication.ui.movie_list
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,16 +19,15 @@ class MovieListViewModel @Inject constructor(private val repository: MoviesRepos
     private val _genresLiveData = MutableLiveData<List<Genre>>()
     val genresLiveData: LiveData<List<Genre>> get() = _genresLiveData
 
-
-    fun getFilms(context: Context) {
+    fun getFilms() {
         viewModelScope.launch {
-            _filmsLiveData.value = repository.loadMovies(context)
+            _filmsLiveData.value = repository.loadMovies()
         }
     }
 
-    fun getGenres(context: Context) {
+    fun getGenres() {
         viewModelScope.launch {
-            _genresLiveData.value = repository.getGenres(context)
+            _genresLiveData.value = repository.getGenres()
         }
     }
 }

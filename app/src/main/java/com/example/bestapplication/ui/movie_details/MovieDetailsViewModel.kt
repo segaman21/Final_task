@@ -1,6 +1,5 @@
 package com.example.bestapplication.ui.movie_details
 
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,26 +17,16 @@ class MovieDetailsViewModel @Inject constructor(private val repository: MoviesRe
     val moviesLiveData: LiveData<MovieFull> get() = _moviesLiveData
     private val _actorsLiveData = MutableLiveData<List<Actor>>()
     val actorsLiveData: LiveData<List<Actor>> get() = _actorsLiveData
-    private val _sharedLink: ShareLink? = null
-    val sharedLink get() = _sharedLink
 
-
-    fun getMovies(context: Context, movieId: Int) {
+    fun getMovies(movieId: Int) {
         viewModelScope.launch {
-            _moviesLiveData.value = repository.getMovie(context, movieId)
+            _moviesLiveData.value = repository.getMovie(movieId)
         }
     }
 
-    fun getActors(context: Context, movieId: Int) {
+    fun getActors(movieId: Int) {
         viewModelScope.launch {
-            _actorsLiveData.value = repository.getActors(context, movieId)
+            _actorsLiveData.value = repository.getActors(movieId)
         }
     }
-
-    fun getLink(movieId: Int) {
-        viewModelScope.launch {
-            _sharedLink = repository.getShareLink(movieId)
-        }
-    }
-
 }

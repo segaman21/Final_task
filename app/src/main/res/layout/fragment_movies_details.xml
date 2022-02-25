@@ -38,16 +38,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/share_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/movie_details_image_back_start_dimen"
-            android:src="@drawable/ic_baseline_share_24"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/imageView_back" />
-
-
         <TextView
             android:id="@+id/textView_age"
             android:layout_width="wrap_content"

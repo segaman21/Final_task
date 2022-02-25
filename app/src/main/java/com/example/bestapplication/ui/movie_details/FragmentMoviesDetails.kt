@@ -39,9 +39,9 @@ class FragmentMoviesDetails : Fragment() {
         val movieId = arguments?.getInt(MOVIE_ID)
         initListeners()
         initObservers(movieId)
-        viewModel.getActors(requireActivity(), movieId!!)
-        binding.shareButton?.setOnClickListener { shareMovieDetails(movieId) }
-
+        if (movieId != null) {
+            viewModel.getActors(movieId)
+        }
     }
 
     override fun onDestroyView() {
@@ -57,14 +57,14 @@ class FragmentMoviesDetails : Fragment() {
         viewModel.actorsLiveData.observe(viewLifecycleOwner, {
             actors = it
             if (movieId != null) {
-                viewModel.getMovies(requireActivity(), movieId)
+                viewModel.getMovies(movieId)
             }
         })
     }
 
     @SuppressLint("SetTextI18n")
-    private fun bind(movie: MovieFull?, actors: List<Actor>?) {
-        setRate(movie!!.ratings)
+    private fun bind(movie: MovieFull, actors: List<Actor>?) {
+        setRate(movie.ratings)
         val posterUrl = "https://image.tmdb.org/t/p/original/${movie.backdrop}"
         Glide.with(requireActivity())
             .load(posterUrl)
@@ -83,7 +83,6 @@ class FragmentMoviesDetails : Fragment() {
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recycler_name.layoutManager = linearLayoutManager
     }
-
 
     private fun setGenres(genres: List<Genre>): String {
         var genresStr = ""
@@ -123,7 +122,6 @@ class FragmentMoviesDetails : Fragment() {
         } else {
             setGrayStar(binding.imageViewStarFive)
         }
-
     }
 
     private fun setGrayStar(starView: ImageView) {
@@ -150,11 +148,10 @@ class FragmentMoviesDetails : Fragment() {
         }
     }
 
-    private fun shareMovieDetails(movieId: Int) {
-        val sharedLink=viewModel.getLink(movieId)
+    private fun shareMovieDetails(sharedLink: String) {
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "text/plain"
-        intent.putExtra(Intent.EXTRA_TEXT, "$sharedLink")
+        intent.putExtra(Intent.EXTRA_TEXT, sharedLink)
         startActivity(intent)
     }
 

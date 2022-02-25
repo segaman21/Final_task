@@ -2,8 +2,6 @@ package com.example.bestapplication.ui.movie_details
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bestapplication.R
@@ -24,7 +22,6 @@ class ActorAdapter(private val items: List<Actor>) : RecyclerView.Adapter<ActorV
     override fun getItemCount(): Int {
         return items.size
     }
-
 }
 
 class ActorViewHolder(private val binding: ViewHolderActorBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -34,7 +31,7 @@ class ActorViewHolder(private val binding: ViewHolderActorBinding) : RecyclerVie
             val imageUrl = "https://image.tmdb.org/t/p/original/${item.picture}"
             Glide.with(itemView)
                 .load(imageUrl)
-                .placeholder(R.drawable.arrow)
+                .placeholder(R.drawable.ic_download)
                 .centerCrop()
                 .into(binding.imageActor)
         }

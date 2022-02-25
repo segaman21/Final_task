@@ -33,11 +33,9 @@ class NetworkModule {
             .baseUrl(baseUrl)
             .addConverterFactory(json.asConverterFactory(contentType))
             .build()
-
     }
     @Provides
     @Singleton
     fun provideMainService(retrofit: Retrofit): MoviesService =
         retrofit.create(MoviesService::class.java)
-
 }

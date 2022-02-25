@@ -12,11 +12,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .add(R.id.fragment_container, FragmentMoviesList())
-                    .addToBackStack(null)
-                    .commit()
+                .add(R.id.fragment_container, FragmentMoviesList())
+                .addToBackStack(null)
+                .commit()
         }
     }
+
     override fun onBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()

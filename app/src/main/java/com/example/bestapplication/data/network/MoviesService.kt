@@ -42,11 +42,4 @@ interface MoviesService {
         @Query("api_key") key: String,
         @Query("language") lang: String
     ): MovieFull
-
-    @GET("movie/{movie_id}/watch/providers")
-    suspend fun getShareLink(
-        @Path("movie_id") movieId: Int,
-        @Query("api_key") key: String,
-        @Query("language") lang: String
-    ): ResultShareLink
 }

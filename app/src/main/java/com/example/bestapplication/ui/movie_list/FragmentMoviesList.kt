@@ -11,9 +11,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.bestapplication.ui.movie_details.FragmentMoviesDetails
 import com.example.bestapplication.R
+import com.example.bestapplication.SwitchTheme
 import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.data.model.MoviePreview
-
 import com.example.bestapplication.databinding.FragmentMoviesListBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies_list.*
@@ -21,7 +21,8 @@ import kotlinx.android.synthetic.main.fragment_movies_list.*
 
 @AndroidEntryPoint
 class FragmentMoviesList : Fragment(), MovieListAdapter.Callback {
-    private var _binding:FragmentMoviesListBinding?=null
+    private var switchTheme = SwitchTheme()
+    private var _binding: FragmentMoviesListBinding? = null
     private val binding get() = _binding!!
     private var genreList = listOf<Genre>()
     private val viewModel by viewModels<MovieListViewModel>()
@@ -35,24 +36,16 @@ class FragmentMoviesList : Fragment(), MovieListAdapter.Callback {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel.getGenres(requireActivity())
+        viewModel.getGenres()
         initObservers()
-        switchTheme()
+        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
+            switchTheme.switch(isChecked)
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun switchTheme() {
-        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
-        }
     }
 
     private fun initObservers() {
@@ -68,9 +61,9 @@ class FragmentMoviesList : Fragment(), MovieListAdapter.Callback {
         })
 
         viewModel.genresLiveData.observe(viewLifecycleOwner, {
-            it?: return@observe
+            it ?: return@observe
             genreList = it
-            viewModel.getFilms(requireActivity())
+            viewModel.getFilms()
         })
     }
 
