@@ -8,10 +8,26 @@ import com.example.bestapplication.R
 import com.example.bestapplication.data.model.Actor
 import com.example.bestapplication.databinding.ViewHolderActorBinding
 
-class ActorAdapter(private val items: List<Actor>) : RecyclerView.Adapter<ActorViewHolder>() {
+class ActorAdapter(private val items: List<Actor>) : RecyclerView.Adapter<ActorAdapter.ActorViewHolder>() {
+
+    class ActorViewHolder(private val binding: ViewHolderActorBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun onBind(item: Actor) {
+            binding.nameActor.text = item.name
+            if (item.picture != null) {
+                val imageUrl = "https://image.tmdb.org/t/p/original/${item.picture}"
+                Glide.with(itemView)
+                    .load(imageUrl)
+                    .placeholder(R.drawable.ic_download)
+                    .centerCrop()
+                    .into(binding.imageActor)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorViewHolder {
-        val view = ViewHolderActorBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val view =
+            ViewHolderActorBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ActorViewHolder(view)
     }
 
@@ -24,19 +40,7 @@ class ActorAdapter(private val items: List<Actor>) : RecyclerView.Adapter<ActorV
     }
 }
 
-class ActorViewHolder(private val binding: ViewHolderActorBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun onBind(item: Actor) {
-        binding.nameActor.text = item.name
-        if (item.picture != null) {
-            val imageUrl = "https://image.tmdb.org/t/p/original/${item.picture}"
-            Glide.with(itemView)
-                .load(imageUrl)
-                .placeholder(R.drawable.ic_download)
-                .centerCrop()
-                .into(binding.imageActor)
-        }
-    }
-}
+
 
 
 

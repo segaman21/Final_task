@@ -21,7 +21,6 @@
             android:layout_width="@dimen/movie_details_image_size"
             android:layout_height="@dimen/movie_details_image_size"
             android:scaleType="centerCrop"
-            android:src="@drawable/mask"
             app:layout_constraintBottom_toBottomOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -43,12 +42,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/movie_details_tv_age_start_dimen"
             android:layout_marginBottom="@dimen/movie_details_tv_age_bottom_dimen"
-            android:textColor="@color/white"
             android:padding="@dimen/movie_details_tv_age_padding"
-            android:text="@string/age_card_description"
+            android:textColor="@color/white"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/imageView_title"
-            app:layout_constraintBottom_toBottomOf="@+id/guideline" />
+            app:layout_constraintBottom_toBottomOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="@+id/imageView_title" />
 
         <TextView
             android:id="@+id/tv_title_movie"
@@ -56,7 +54,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/movie_details_land_name_start_margin"
             android:layout_marginEnd="@dimen/movie_details_land_name_end_margin"
-            android:text="@string/name_film_in_card"
             android:textSize="@dimen/movie_details_name_size"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +63,6 @@
             android:id="@+id/textView_genre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/genres"
             app:layout_constraintStart_toStartOf="@+id/tv_title_movie"
             app:layout_constraintTop_toBottomOf="@id/tv_title_movie" />
 
@@ -75,7 +71,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/movie_details_first_star_start_dimen"
-            android:src="@drawable/star_red"
             app:layout_constraintLeft_toLeftOf="@id/textView_genre"
             app:layout_constraintTop_toBottomOf="@id/textView_genre" />
 
@@ -85,7 +80,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/movie_details_second_star_start_dimen"
             android:layout_marginTop="@dimen/movie_details_second_star_top_dimen"
-            android:src="@drawable/star_red"
             app:layout_constraintStart_toEndOf="@+id/imageView_star_one"
             app:layout_constraintTop_toBottomOf="@id/textView_genre" />
 
@@ -95,7 +89,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/movie_details_third_star_start_dimen"
             android:layout_marginTop="@dimen/movie_details_third_star_top_dimen"
-            android:src="@drawable/star_red"
             app:layout_constraintStart_toEndOf="@+id/imageView_star_two"
             app:layout_constraintTop_toBottomOf="@id/textView_genre" />
 
@@ -105,7 +98,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/movie_details_four_star_start_dimen"
             android:layout_marginTop="@dimen/movie_details_four_star_top_dimen"
-            android:src="@drawable/star_red"
             app:layout_constraintStart_toEndOf="@+id/imageView_star_three"
             app:layout_constraintTop_toBottomOf="@id/textView_genre" />
 
@@ -115,7 +107,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/movie_details_five_star_start_dimen"
             android:layout_marginTop="@dimen/movie_details_five_star_top_dimen"
-            android:src="@drawable/star_gray"
             app:layout_constraintStart_toEndOf="@+id/imageView_star_four"
             app:layout_constraintTop_toBottomOf="@id/textView_genre" />
 
@@ -125,7 +116,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/movie_details_reviews_start_dimen"
             android:layout_marginTop="@dimen/movie_details_reviews_top_dimen"
-            android:text="@string/how_many_reviews_label"
             android:textAllCaps="true"
             android:textStyle="bold"
             app:layout_constraintLeft_toRightOf="@+id/imageView_star_five"
@@ -136,7 +126,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/movie_details_story_line_top_dimen"
-            android:text="@string/story_title"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@+id/imageView_star_one"
             app:layout_constraintTop_toBottomOf="@+id/imageView_star_one" />
@@ -149,7 +138,6 @@
             android:layout_marginTop="@dimen/movie_details_story_top_dimen"
             android:layout_marginEnd="@dimen/movie_details_story_start_dimen"
             android:lineSpacingExtra="@dimen/movie_details_story_extra_dimen"
-            android:text="@string/what_storyline"
             app:layout_constraintTop_toBottomOf="@+id/textView_storyline" />
 
         <TextView
@@ -159,7 +147,6 @@
             android:layout_marginStart="@dimen/movie_details_cast_title_start_dimen"
             android:layout_marginTop="@dimen/movie_details_cast_title_top_dimen"
             android:layout_marginEnd="@dimen/movie_details_cast_title_end_dimen"
-            android:text="@string/cast_title"
             android:textSize="@dimen/movie_details_cast_title_size"
             android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="@+id/textView_story"

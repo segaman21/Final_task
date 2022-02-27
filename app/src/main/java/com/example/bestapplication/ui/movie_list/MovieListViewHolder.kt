@@ -11,13 +11,21 @@ import com.example.bestapplication.data.model.MoviePreview
 import com.example.bestapplication.databinding.FragmentMovieBinding
 
 
-class MovieListViewHolder(private val binding: FragmentMovieBinding) : RecyclerView.ViewHolder(binding.root) {
+class MovieListViewHolder(private val binding: FragmentMovieBinding, onClick: OnMovieClick) :
+    RecyclerView.ViewHolder(binding.root) {
+    private var currentFilm: MoviePreview? = null
+
+    init {
+        binding.filmCard.setOnClickListener {
+            currentFilm?.let {
+                onClick(it)
+            }
+        }
+    }
 
     @SuppressLint("SetTextI18n")
-    fun onBind(item: MoviePreview, genreList: List<Genre>, callback: MovieListAdapter.Callback) {
-        itemView.setOnClickListener {
-            callback.startMovieDetailsFragment(item)
-        }
+    fun onBind(item: MoviePreview, genreList: List<Genre>) {
+        currentFilm=item
         val genres = mutableListOf<Genre>()
         for (element in item.genres) {
             val genre = genreList.firstOrNull { it.id == element }

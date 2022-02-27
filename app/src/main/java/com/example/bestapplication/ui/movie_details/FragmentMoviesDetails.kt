@@ -36,7 +36,7 @@ class FragmentMoviesDetails : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val movieId = arguments?.getInt(MOVIE_ID)
+        val movieId = arguments?.getInt("ID")
         initListeners()
         initObservers(movieId)
         if (movieId != null) {
@@ -145,24 +145,6 @@ class FragmentMoviesDetails : Fragment() {
     private fun initListeners() {
         imageView_back.setOnClickListener {
             requireActivity().onBackPressed()
-        }
-    }
-
-    private fun shareMovieDetails(sharedLink: String) {
-        val intent = Intent(Intent.ACTION_SEND)
-        intent.type = "text/plain"
-        intent.putExtra(Intent.EXTRA_TEXT, sharedLink)
-        startActivity(intent)
-    }
-
-    companion object {
-        private const val MOVIE_ID = "movie"
-        fun newInstance(moviePreview: Int): FragmentMoviesDetails {
-            val fragment = FragmentMoviesDetails()
-            val args = Bundle()
-            args.putInt(MOVIE_ID, moviePreview)
-            fragment.arguments = args
-            return fragment
         }
     }
 }
