@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/name_actor"
-        android:layout_width="@dimen/view_holder_text_dimen"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/actor_ironman"
         app:layout_constraintStart_toStartOf="@+id/image_actor"

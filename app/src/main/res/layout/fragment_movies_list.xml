@@ -1,49 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/movie_list_image_start_dimen"
-        android:layout_marginTop="@dimen/movie_list_image_top_dimen"
-        android:src="@drawable/combined_shape"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/movie_list_text_label_start_dimen"
-        android:layout_marginTop="@dimen/movie_list_text_label_top_dimen"
-        android:padding="@dimen/movie_list_text_label_padding"
-        android:text="@string/movies_list"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Switch
-        android:id="@+id/switch_theme"
-        android:layout_width="@dimen/movie_list_switch_width"
-        android:layout_height="@dimen/movie_list_switch_height"
-        app:layout_constraintEnd_toStartOf="@+id/switch_text"
-        app:layout_constraintTop_toTopOf="@id/text"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-    <TextView
-        android:id="@+id/switch_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/switch_theme"
-        android:paddingTop="@dimen/movie_list_text_label_padding"
-        android:layout_marginEnd="@dimen/movie_list_text_label_top_dimen"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/switch_theme"
-        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/movies_list"
@@ -53,7 +12,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

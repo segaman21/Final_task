@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/film_card"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/film_card"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/margin_card_film">
+    android:layout_margin="@dimen/margin_card_film"
+    app:cardPreventCornerOverlap="false">
 
     <ImageView
         android:id="@+id/image_view_mask"
@@ -15,65 +15,65 @@
         android:src="@drawable/mask_movie"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/first_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/small_red"
         android:layout_marginStart="@dimen/first_star_start_dimen"
         android:layout_marginTop="@dimen/first_star_top_dimen"
-        app:layout_constraintTop_toBottomOf="@id/genre_description"
-        app:layout_constraintLeft_toLeftOf="@+id/image_view_mask"/>
+        android:src="@drawable/small_red"
+        app:layout_constraintLeft_toLeftOf="@+id/image_view_mask"
+        app:layout_constraintTop_toBottomOf="@id/genre_description" />
 
     <ImageView
         android:id="@+id/second_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/small_red"
         android:layout_marginStart="@dimen/second_star_start_dimen"
-        app:layout_constraintTop_toTopOf="@+id/first_star"
-        app:layout_constraintLeft_toRightOf="@+id/first_star"/>
+        android:src="@drawable/small_red"
+        app:layout_constraintLeft_toRightOf="@+id/first_star"
+        app:layout_constraintTop_toTopOf="@+id/first_star" />
 
     <ImageView
         android:id="@+id/third_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/small_red"
         android:layout_marginStart="@dimen/third_star_start_dimen"
-        app:layout_constraintTop_toTopOf="@+id/second_star"
-        app:layout_constraintLeft_toRightOf="@+id/second_star"/>
+        android:src="@drawable/small_red"
+        app:layout_constraintLeft_toRightOf="@+id/second_star"
+        app:layout_constraintTop_toTopOf="@+id/second_star" />
 
     <ImageView
         android:id="@+id/four_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/small_red"
         android:layout_marginStart="@dimen/four_star_start_dimen"
-        app:layout_constraintTop_toTopOf="@+id/third_star"
-        app:layout_constraintLeft_toRightOf="@+id/third_star"/>
+        android:src="@drawable/small_red"
+        app:layout_constraintLeft_toRightOf="@+id/third_star"
+        app:layout_constraintTop_toTopOf="@+id/third_star" />
+
     <ImageView
         android:id="@+id/five_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/small_gray"
         android:layout_marginStart="@dimen/five_star_start_dimen"
-        app:layout_constraintTop_toTopOf="@+id/four_star"
-        app:layout_constraintLeft_toRightOf="@+id/four_star"/>
+        android:src="@drawable/small_gray"
+        app:layout_constraintLeft_toRightOf="@+id/four_star"
+        app:layout_constraintTop_toTopOf="@+id/four_star" />
 
     <TextView
         android:id="@+id/how_reviews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/how_many_reviews_label"
-        android:textAllCaps="true"
-        android:textSize="@dimen/reviews_text_size"
-        android:textStyle="bold"
-        android:textColor="@color/text_color_red"
         android:layout_marginStart="@dimen/reviews_start_dimen"
         android:layout_marginTop="@dimen/reviews_top_dimen"
+        android:text="@string/how_many_reviews_label"
+        android:textAllCaps="true"
+        android:textColor="@color/text_color_red"
+        android:textSize="@dimen/reviews_text_size"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/five_star"
         app:layout_constraintTop_toBottomOf="@id/genre_description" />
 
@@ -103,28 +103,17 @@
         app:layout_constraintStart_toStartOf="@+id/image_view_mask"
         app:layout_constraintTop_toTopOf="@+id/image_view_mask" />
 
-    <ImageView
-        android:id="@+id/is_card_liked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/like"
-        android:layout_marginTop="@dimen/is_liked_top_dimen"
-        android:layout_marginEnd="@dimen/is_liked_end_dimen"
-        android:layout_marginStart="@dimen/is_liked_start_dimen"
-        app:layout_constraintStart_toEndOf="@+id/tv_age"
-        app:layout_constraintTop_toTopOf="@+id/image_view_mask" />
-
     <TextView
         android:id="@+id/movie_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:paddingBottom="@dimen/movie_time_padding"
         android:text="@string/name_film_in_card"
         android:textSize="@dimen/size_of_movie_name"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_view_mask"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/image_view_mask" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

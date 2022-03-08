@@ -31,5 +31,7 @@ data class MovieFull(
         @SerialName("vote_average") val ratings: Float,
         @SerialName("vote_count") val numberOfRatings: Int,
         @SerialName("genres") val genres: List<Genre>,
-        @SerialName("adult") val minimumAge: Boolean
+        @SerialName("adult") val minimumAge: Boolean,
+        @SerialName("runtime") val runtime: Int,
+        @SerialName("poster_path") val poster: String
 )

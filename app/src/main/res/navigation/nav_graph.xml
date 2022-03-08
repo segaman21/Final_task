@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentMoviesList">
+    app:startDestination="@id/viewPagerFragment">
 
     <fragment
         android:id="@+id/fragmentMoviesDetails"
@@ -19,6 +19,24 @@
         tools:layout="@layout/fragment_movies_list">
         <action
             android:id="@+id/action_fragmentMoviesList_to_fragmentMoviesDetails"
-            app:destination="@id/fragmentMoviesDetails" />
+            app:destination="@id/fragmentMoviesDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.example.bestapplication.ui.ViewPagerFragment"
+        android:label="ViewPagerFragment"
+        tools:layout="@layout/fragment_view_pager">
+        <action
+            android:id="@+id/action_viewPagerFragment_to_fragmentMoviesDetails"
+            app:destination="@id/fragmentMoviesDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
     </fragment>
 </navigation>

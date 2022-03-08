@@ -1,28 +1,34 @@
 package com.example.bestapplication.ui.movie_details
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.bestapplication.R
+import com.example.bestapplication.ui.favorite_movie.FavoriteMovieViewModel
 import com.example.bestapplication.data.model.Actor
 import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.data.model.MovieFull
 import com.example.bestapplication.databinding.FragmentMoviesDetailsBinding
+import com.example.bestapplication.utilites.Keys.ID
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies_details.*
+import kotlinx.serialization.ExperimentalSerializationApi
 
 @AndroidEntryPoint
 class FragmentMoviesDetails : Fragment() {
-    private val viewModel by viewModels<MovieDetailsViewModel>()
+    private val detailsMovieViewModel by viewModels<MovieDetailsViewModel>()
+    private val favoriteMovieViewModel by viewModels<FavoriteMovieViewModel>()
     private var _binding: FragmentMoviesDetailsBinding? = null
     private val binding get() = _binding!!
 
@@ -35,12 +41,21 @@ class FragmentMoviesDetails : Fragment() {
         return binding.root
     }
 
+    @ExperimentalSerializationApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val movieId = arguments?.getInt("ID")
-        initListeners()
+        val movieId = arguments?.getInt(ID)
         initObservers(movieId)
         if (movieId != null) {
-            viewModel.getActors(movieId)
+            detailsMovieViewModel.getActors(movieId)
+        }
+        toolbar.setNavigationOnClickListener { view ->
+            view.findNavController().navigateUp()
+        }
+        binding.fab?.setOnClickListener {
+            hideAppBarFab(fab)
+            if (movieId != null) {
+                favoriteMovieViewModel.insertToDatabase(movieId)
+            }
         }
     }
 
@@ -51,13 +66,13 @@ class FragmentMoviesDetails : Fragment() {
 
     private fun initObservers(movieId: Int?) {
         var actors: List<Actor>? = null
-        viewModel.moviesLiveData.observe(viewLifecycleOwner, {
+        detailsMovieViewModel.moviesLiveData.observe(viewLifecycleOwner, {
             bind(it, actors)
         })
-        viewModel.actorsLiveData.observe(viewLifecycleOwner, {
+        detailsMovieViewModel.actorsLiveData.observe(viewLifecycleOwner, {
             actors = it
             if (movieId != null) {
-                viewModel.getMovies(movieId)
+                detailsMovieViewModel.getMovies(movieId)
             }
         })
     }
@@ -142,9 +157,10 @@ class FragmentMoviesDetails : Fragment() {
         )
     }
 
-    private fun initListeners() {
-        imageView_back.setOnClickListener {
-            requireActivity().onBackPressed()
-        }
+    private fun hideAppBarFab(fab: FloatingActionButton) {
+        val params = fab.layoutParams as CoordinatorLayout.LayoutParams
+        val behavior = params.behavior as FloatingActionButton.Behavior
+        behavior.isAutoHideEnabled = false
+        fab.hide()
     }
 }

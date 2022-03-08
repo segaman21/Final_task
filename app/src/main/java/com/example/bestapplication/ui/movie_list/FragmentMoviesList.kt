@@ -11,15 +11,14 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.bestapplication.R
-import com.example.bestapplication.SwitchTheme
 import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.databinding.FragmentMoviesListBinding
+import com.example.bestapplication.utilites.Keys.ID
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies_list.*
 
 @AndroidEntryPoint
 class FragmentMoviesList : Fragment() {
-    private var switchTheme = SwitchTheme()
     private var _binding: FragmentMoviesListBinding? = null
     private val binding get() = _binding!!
     private var genreList = listOf<Genre>()
@@ -38,9 +37,6 @@ class FragmentMoviesList : Fragment() {
         viewModel.getGenres()
         viewModel.getFilms()
         initObservers()
-        binding.switchTheme.setOnCheckedChangeListener { _, isChecked ->
-            switchTheme.switch(isChecked)
-        }
     }
 
     override fun onDestroyView() {
@@ -50,9 +46,9 @@ class FragmentMoviesList : Fragment() {
 
     private fun initObservers() {
         val movieAdapter = MovieListAdapter(onClick = {
-            val bundle = bundleOf("ID" to it.id)
+            val bundle = bundleOf(ID to it.id)
             findNavController().navigate(
-                R.id.action_fragmentMoviesList_to_fragmentMoviesDetails,
+                R.id.action_viewPagerFragment_to_fragmentMoviesDetails,
                 bundle
             )
         })

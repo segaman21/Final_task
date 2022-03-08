@@ -10,7 +10,6 @@ import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.data.model.MoviePreview
 import com.example.bestapplication.databinding.FragmentMovieBinding
 
-
 class MovieListViewHolder(private val binding: FragmentMovieBinding, onClick: OnMovieClick) :
     RecyclerView.ViewHolder(binding.root) {
     private var currentFilm: MoviePreview? = null
@@ -25,7 +24,7 @@ class MovieListViewHolder(private val binding: FragmentMovieBinding, onClick: On
 
     @SuppressLint("SetTextI18n")
     fun onBind(item: MoviePreview, genreList: List<Genre>) {
-        currentFilm=item
+        currentFilm = item
         val genres = mutableListOf<Genre>()
         for (element in item.genres) {
             val genre = genreList.firstOrNull { it.id == element }
@@ -38,14 +37,6 @@ class MovieListViewHolder(private val binding: FragmentMovieBinding, onClick: On
         binding.movieName.text = item.title
         binding.howReviews.text = "${item.numberOfRatings} reviews"
         binding.tvAge.text = if (item.minimumAge) "+16" else "+13"
-        binding.isCardLiked.setOnClickListener {
-            binding.isCardLiked.setImageDrawable(
-                ContextCompat.getDrawable(
-                    itemView.context,
-                    R.drawable.ic_liked
-                )
-            )
-        }
         val posterUrl = "https://image.tmdb.org/t/p/original/${item.poster}"
         Glide.with(itemView)
             .load(posterUrl)
@@ -53,7 +44,6 @@ class MovieListViewHolder(private val binding: FragmentMovieBinding, onClick: On
             .placeholder(R.drawable.ic_download)
             .into(binding.imageViewMask)
     }
-
 
     private fun setRate(rate: Float) {
         if (rate >= 2.0F) {

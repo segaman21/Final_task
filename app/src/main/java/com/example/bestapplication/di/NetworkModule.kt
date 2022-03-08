@@ -17,7 +17,7 @@ import javax.inject.Singleton
 class NetworkModule {
 
     @Provides
-    fun baseUrl():String = "https://api.themoviedb.org/3/"
+    fun baseUrl(): String = "https://api.themoviedb.org/3/"
     private val json = Json {
         prettyPrint = true
         ignoreUnknownKeys = true
@@ -34,6 +34,7 @@ class NetworkModule {
             .addConverterFactory(json.asConverterFactory(contentType))
             .build()
     }
+
     @Provides
     @Singleton
     fun provideMainService(retrofit: Retrofit): MoviesService =
