@@ -1,8 +1,6 @@
 package com.example.bestapplication.data.model
 
 import android.os.Parcelable
-import com.example.bestapplication.data.model.Actor
-import com.example.bestapplication.data.model.Genre
 import kotlinx.android.parcel.Parcelize
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -33,5 +31,7 @@ data class MovieFull(
         @SerialName("vote_average") val ratings: Float,
         @SerialName("vote_count") val numberOfRatings: Int,
         @SerialName("genres") val genres: List<Genre>,
-        @SerialName("adult") val minimumAge: Boolean
+        @SerialName("adult") val minimumAge: Boolean,
+        @SerialName("runtime") val runtime: Int,
+        @SerialName("poster_path") val poster: String
 )

@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="@dimen/width_card_film"
     android:layout_height="wrap_content"
-    android:background="@color/color_bg"
     android:layout_margin="@dimen/margin_card_film">
 
     <ImageView
@@ -68,7 +67,7 @@
         android:text="@string/how_many_reviews_label"
         android:textAllCaps="true"
         android:textSize="@dimen/reviews_text_size"
-        android:textColor="@color/text_color"
+        android:textColor="@color/text_color_red"
         android:textStyle="bold"
         android:layout_marginStart="@dimen/reviews_start_dimen"
         android:layout_marginTop="@dimen/reviews_top_dimen"
@@ -92,23 +91,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/tv_age_start_dimen"
         android:layout_marginTop="@dimen/tv_age_top_dimen"
-        android:background="@drawable/bg_age"
         android:padding="@dimen/tv_age_padding"
         android:text="@string/age_card_description"
-        android:textColor="@color/white"
+        android:textColor="@color/text_color_red"
         android:textSize="@dimen/tv_age_text_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/image_view_mask"
-        app:layout_constraintTop_toTopOf="@+id/image_view_mask" />
-
-    <ImageView
-        android:id="@+id/is_card_liked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/like"
-        android:layout_marginTop="@dimen/is_liked_top_dimen"
-        android:layout_marginStart="@dimen/is_liked_start_dimen"
-        app:layout_constraintStart_toEndOf="@+id/tv_age"
         app:layout_constraintTop_toTopOf="@+id/image_view_mask" />
 
     <TextView
@@ -116,14 +104,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/name_film_in_card"
-        android:textColor="@color/white"
         android:layout_marginTop="@dimen/name_movie_start_dimen"
-        android:layout_marginStart="@dimen/name_movie_start_dimen"
         android:textStyle="bold"
         android:textSize="@dimen/size_of_movie_name"
         android:paddingBottom="@dimen/movie_time_padding"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_view_mask" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

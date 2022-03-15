@@ -11,11 +11,11 @@
         android:layout_width="@dimen/view_holder_actor_dimen"
         android:layout_height="@dimen/view_holder_actor_dimen"
         android:src="@drawable/ironman" />
+
     <TextView
         android:id="@+id/name_actor"
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_holder_name_actor_dimen"
-        android:textColor="@color/white"
-        />
+        android:gravity="center"/>
 
 </LinearLayout>

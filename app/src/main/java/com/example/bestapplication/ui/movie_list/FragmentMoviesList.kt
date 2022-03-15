@@ -5,60 +5,65 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.bestapplication.ui.movie_details.FragmentMoviesDetails
 import com.example.bestapplication.R
 import com.example.bestapplication.data.model.Genre
-import com.example.bestapplication.data.model.MoviePreview
+import com.example.bestapplication.databinding.FragmentMoviesListBinding
+import com.example.bestapplication.utilites.Keys.ID
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies_list.*
 
 @AndroidEntryPoint
-class FragmentMoviesList : Fragment(), MovieListAdapter.Callback {
-
+class FragmentMoviesList : Fragment() {
+    private var _binding: FragmentMoviesListBinding? = null
+    private val binding get() = _binding!!
     private var genreList = listOf<Genre>()
     private val viewModel by viewModels<MovieListViewModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_movies_list, container, false)
+    ): View {
+        _binding = FragmentMoviesListBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel.getGenres(requireActivity())
+        viewModel.getGenres()
+        viewModel.getFilms()
         initObservers()
     }
 
-    private fun initObservers() {
-        viewModel.filmsLiveData.observe(viewLifecycleOwner, { movies ->
-            val moviesListAdapter = MovieListAdapter(movies, genreList)
-            moviesListAdapter.initCallback(this)
-            movies_details.adapter = moviesListAdapter
-            if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                movies_details.layoutManager = GridLayoutManager(context, 2)
-            } else {
-                movies_details.layoutManager = GridLayoutManager(context, 4)
-            }
-        })
-
-        viewModel.genresLiveData.observe(viewLifecycleOwner, {
-            it?: return@observe
-            genreList = it
-            viewModel.getFilms(requireActivity())
-        })
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
-
-    override fun startMovieDetailsFragment(item: MoviePreview) {
-        fragmentManager
-            ?.beginTransaction()
-            ?.replace(R.id.fragment_container, FragmentMoviesDetails.newInstance(item.id))
-            ?.addToBackStack(null)
-            ?.commit()
+    private fun initObservers() {
+        val movieAdapter = MovieListAdapter(onClick = {
+            val bundle = bundleOf(ID to it.id)
+            findNavController().navigate(
+                R.id.action_viewPagerFragment_to_fragmentMoviesDetails,
+                bundle
+            )
+        })
+        viewModel.genresLiveData.observe(viewLifecycleOwner, {
+            genreList = it
+            movieAdapter.setGenres(genreList)
+        })
+        movies_list.adapter = movieAdapter
+        if (resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            movies_list.layoutManager = GridLayoutManager(context, 2)
+        } else {
+            movies_list.layoutManager = GridLayoutManager(context, 4)
+        }
+        viewModel.filmsLiveData.observe(viewLifecycleOwner, { movies ->
+            movieAdapter.submitList(movies)
+        })
     }
 }
-

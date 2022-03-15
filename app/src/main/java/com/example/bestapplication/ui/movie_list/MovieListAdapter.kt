@@ -2,34 +2,54 @@ package com.example.bestapplication.ui.movie_list
 
 import android.view.ViewGroup
 import android.view.LayoutInflater
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.data.model.MoviePreview
 import com.example.bestapplication.databinding.FragmentMovieBinding
 
-class MovieListAdapter(private val moviesList: List<MoviePreview>, private val genres: List<Genre>) :
-    RecyclerView.Adapter<MovieListViewHolder>() {
-    lateinit var callback: Callback
+typealias OnMovieClick = (MoviePreview) -> Unit
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
-        val view =FragmentMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MovieListViewHolder(view)
+class MovieListAdapter(
+    private val onClick: OnMovieClick
+) : ListAdapter<MoviePreview, MovieListViewHolder>(MovieDiffUtils) {
+    private var genres: List<Genre>? = null
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MovieListViewHolder {
+        val view = FragmentMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MovieListViewHolder(view, onClick)
     }
 
-    override fun getItemCount(): Int {
-        return moviesList.size
+    override fun onBindViewHolder(
+        holder: MovieListViewHolder,
+        position: Int
+    ) {
+        val movie = getItem(position)
+        genres?.let { holder.onBind(movie, it) }
+
     }
 
-    override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
-        holder.onBind(moviesList[position], genres, this.callback)
+    object MovieDiffUtils : DiffUtil.ItemCallback<MoviePreview>() {
+        override fun areItemsTheSame(
+            oldItem: MoviePreview,
+            newItem: MoviePreview
+        ): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(
+            oldItem: MoviePreview,
+            newItem: MoviePreview
+        ): Boolean {
+            return oldItem == newItem
+        }
     }
 
-    fun initCallback(callback: FragmentMoviesList) {
-        this.callback = callback
+    fun setGenres(genre: List<Genre>) {
+        genres = genre
     }
-
-    interface Callback {
-        fun startMovieDetailsFragment(item: MoviePreview)
-    }
-
 }
+

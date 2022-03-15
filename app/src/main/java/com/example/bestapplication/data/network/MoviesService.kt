@@ -1,9 +1,6 @@
 package com.example.bestapplication.data.network
 
-import com.example.bestapplication.data.model.ActorList
-import com.example.bestapplication.data.model.GenreList
-import com.example.bestapplication.data.model.MovieFull
-import com.example.bestapplication.data.model.MovieList
+import com.example.bestapplication.data.model.*
 import retrofit2.http.*
 
 interface MoviesService {
