@@ -4,6 +4,8 @@
     <string name="minimum_age_16">+16</string>
     <string name="minimum_age_13">+13</string>
     <string name="reviews_film_details">reviews</string>
+    <string name="duration_movie_min">min</string>
+
 
     <string name="app_name">Final task</string>
     <string name="back_page">Back</string>
@@ -25,4 +27,7 @@
 
     <string name="what_storyline">After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos actions and restore balance to the universe.</string>
     <string name="switch_theme">Switch theme</string>
+    <string name="add_to_favorite">Added movie to favorite</string>
+    <string name="name_database">animals_database</string>
+
 </resources>

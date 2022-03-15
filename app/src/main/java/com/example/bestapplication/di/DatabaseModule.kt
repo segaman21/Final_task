@@ -2,6 +2,7 @@ package com.example.bestapplication.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.bestapplication.R
 import com.example.bestapplication.data.database.FavoriteMovieDatabase
 import dagger.Module
 import dagger.Provides
@@ -21,7 +22,7 @@ object DatabaseModule {
     ) = Room.databaseBuilder(
         app,
         FavoriteMovieDatabase::class.java,
-        "animals_database"
+        "${R.string.name_database}"
     ).build()
 
     @Singleton

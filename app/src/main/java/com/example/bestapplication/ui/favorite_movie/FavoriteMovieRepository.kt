@@ -23,16 +23,26 @@ class FavoriteMovieRepository @Inject constructor(
 
     @ExperimentalSerializationApi
     suspend fun insertToDatabase(movieId: Int) {
-        var movieFull: MovieFull? = null
-        var movieDetailsEntity: MovieEntity? = null
+        val movieFull: MovieFull
+        val movieDetailsEntity: MovieEntity
         try {
             movieFull = withContext(Dispatchers.IO) {
                 api.getMovie(movieId, API_KEY, LANG)
             }
             movieDetailsEntity = Mapper.mapMoviesListToDb(movieFull)
-            movieDao.insert(movieDetailsEntity)
+            withContext(Dispatchers.IO) {
+                movieDao.insert(movieDetailsEntity)
+            }
         } catch (e: Exception) {
             throw e
         }
+    }
+
+    suspend fun deleteFromDatabase(movie: MovieEntity) = withContext(Dispatchers.IO) {
+        movieDao.delete(movie)
+    }
+
+    suspend fun checkMovieInDatabase(movieId: Int): Boolean = withContext(Dispatchers.IO) {
+        return@withContext movieDao.check(movieId) != null
     }
 }

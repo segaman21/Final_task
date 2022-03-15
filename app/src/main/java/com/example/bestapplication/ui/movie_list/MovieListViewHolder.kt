@@ -9,8 +9,12 @@ import com.example.bestapplication.R
 import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.data.model.MoviePreview
 import com.example.bestapplication.databinding.FragmentMovieBinding
+import com.example.bestapplication.utilites.Keys.POSTER_URL
 
-class MovieListViewHolder(private val binding: FragmentMovieBinding, onClick: OnMovieClick) :
+class MovieListViewHolder(
+    private val binding: FragmentMovieBinding,
+    onClick: OnMovieClick
+) :
     RecyclerView.ViewHolder(binding.root) {
     private var currentFilm: MoviePreview? = null
 
@@ -23,7 +27,10 @@ class MovieListViewHolder(private val binding: FragmentMovieBinding, onClick: On
     }
 
     @SuppressLint("SetTextI18n")
-    fun onBind(item: MoviePreview, genreList: List<Genre>) {
+    fun onBind(
+        item: MoviePreview,
+        genreList: List<Genre>
+    ) {
         currentFilm = item
         val genres = mutableListOf<Genre>()
         for (element in item.genres) {
@@ -37,7 +44,7 @@ class MovieListViewHolder(private val binding: FragmentMovieBinding, onClick: On
         binding.movieName.text = item.title
         binding.howReviews.text = "${item.numberOfRatings} reviews"
         binding.tvAge.text = if (item.minimumAge) "+16" else "+13"
-        val posterUrl = "https://image.tmdb.org/t/p/original/${item.poster}"
+        val posterUrl = POSTER_URL + item.poster
         Glide.with(itemView)
             .load(posterUrl)
             .centerCrop()

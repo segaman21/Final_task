@@ -7,7 +7,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 object Mapper {
-
     @ExperimentalSerializationApi
     fun mapMoviesListToDb(movieDetails: MovieFull): MovieEntity {
 

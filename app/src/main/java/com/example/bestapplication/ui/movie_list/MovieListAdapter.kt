@@ -15,29 +15,41 @@ class MovieListAdapter(
 ) : ListAdapter<MoviePreview, MovieListViewHolder>(MovieDiffUtils) {
     private var genres: List<Genre>? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieListViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MovieListViewHolder {
         val view = FragmentMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MovieListViewHolder(view, onClick)
     }
 
-    override fun onBindViewHolder(holder: MovieListViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: MovieListViewHolder,
+        position: Int
+    ) {
         val movie = getItem(position)
         genres?.let { holder.onBind(movie, it) }
 
     }
 
     object MovieDiffUtils : DiffUtil.ItemCallback<MoviePreview>() {
-        override fun areItemsTheSame(oldItem: MoviePreview, newItem: MoviePreview): Boolean {
+        override fun areItemsTheSame(
+            oldItem: MoviePreview,
+            newItem: MoviePreview
+        ): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: MoviePreview, newItem: MoviePreview): Boolean {
+        override fun areContentsTheSame(
+            oldItem: MoviePreview,
+            newItem: MoviePreview
+        ): Boolean {
             return oldItem == newItem
         }
     }
 
-    fun setGenres(genre:List<Genre>) {
-        genres=genre
+    fun setGenres(genre: List<Genre>) {
+        genres = genre
     }
 }
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -20,6 +21,7 @@ import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.data.model.MovieFull
 import com.example.bestapplication.databinding.FragmentMoviesDetailsBinding
 import com.example.bestapplication.utilites.Keys.ID
+import com.example.bestapplication.utilites.Keys.POSTER_URL
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies_details.*
@@ -42,20 +44,23 @@ class FragmentMoviesDetails : Fragment() {
     }
 
     @ExperimentalSerializationApi
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?
+    ) {
         val movieId = arguments?.getInt(ID)
         initObservers(movieId)
+        binding.fab?.let { initMovieInDatabaseListener(it) }
         if (movieId != null) {
+            favoriteMovieViewModel.checkMovieInDatabase(movieId)
+            binding.fab?.setOnClickListener {
+                hideAppBar(fab)
+                favoriteMovieViewModel.insertMovieToDatabase(movieId)
+            }
             detailsMovieViewModel.getActors(movieId)
         }
         toolbar.setNavigationOnClickListener { view ->
             view.findNavController().navigateUp()
-        }
-        binding.fab?.setOnClickListener {
-            hideAppBarFab(fab)
-            if (movieId != null) {
-                favoriteMovieViewModel.insertToDatabase(movieId)
-            }
         }
     }
 
@@ -78,9 +83,12 @@ class FragmentMoviesDetails : Fragment() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun bind(movie: MovieFull, actors: List<Actor>?) {
+    private fun bind(
+        movie: MovieFull,
+        actors: List<Actor>?
+    ) {
         setRate(movie.ratings)
-        val posterUrl = "https://image.tmdb.org/t/p/original/${movie.backdrop}"
+        val posterUrl = POSTER_URL + movie.backdrop
         Glide.with(requireActivity())
             .load(posterUrl)
             .placeholder(R.drawable.ic_download)
@@ -91,7 +99,6 @@ class FragmentMoviesDetails : Fragment() {
         binding.reviewsFilm.text = "${movie.numberOfRatings} reviews"
         binding.textViewStory.text = movie.overview
         binding.textViewGenre.text = setGenres(movie.genres)
-
         val movieDetailsAdapter = actors?.let { ActorAdapter(it) }
         recycler_name.adapter = movieDetailsAdapter
         val linearLayoutManager =
@@ -157,10 +164,22 @@ class FragmentMoviesDetails : Fragment() {
         )
     }
 
-    private fun hideAppBarFab(fab: FloatingActionButton) {
+    private fun initMovieInDatabaseListener(fab: FloatingActionButton) {
+        favoriteMovieViewModel.isFavoriteLiveData.observe(viewLifecycleOwner, {
+            if (it) {
+                val params = fab.layoutParams as CoordinatorLayout.LayoutParams
+                val behavior = params.behavior as? FloatingActionButton.Behavior
+                behavior?.isAutoHideEnabled = false
+                fab.hide()
+            }
+        })
+    }
+
+    private fun hideAppBar(fab: FloatingActionButton) {
         val params = fab.layoutParams as CoordinatorLayout.LayoutParams
         val behavior = params.behavior as FloatingActionButton.Behavior
         behavior.isAutoHideEnabled = false
         fab.hide()
+        Toast.makeText(context, R.string.add_to_favorite, Toast.LENGTH_SHORT).show()
     }
 }
