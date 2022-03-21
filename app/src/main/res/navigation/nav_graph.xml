@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/fragmentMoviesDetails"
-        android:name="com.example.bestapplication.ui.movie_details.FragmentMoviesDetails"
+        android:name="com.example.bestapplication.presentation.movie_details.FragmentMoviesDetails"
         android:label="FragmentMoviesDetails"
         tools:layout="@layout/fragment_movies_details">
         <argument android:name="movie_id" />
     </fragment>
     <fragment
         android:id="@+id/fragmentMoviesList"
-        android:name="com.example.bestapplication.ui.movie_list.FragmentMoviesList"
+        android:name="com.example.bestapplication.presentation.movie_list.FragmentMoviesList"
         android:label="FragmentMoviesList"
         tools:layout="@layout/fragment_movies_list">
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/viewPagerFragment"
-        android:name="com.example.bestapplication.ui.ViewPagerFragment"
+        android:name="com.example.bestapplication.presentation.ViewPagerFragment"
         android:label="ViewPagerFragment"
         tools:layout="@layout/fragment_view_pager">
         <action
