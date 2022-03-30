@@ -4,9 +4,9 @@ import android.view.ViewGroup
 import android.view.LayoutInflater
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.example.bestapplication.data.model.Genre
-import com.example.bestapplication.data.model.MoviePreview
 import com.example.bestapplication.databinding.FragmentMovieBinding
+import com.example.bestapplication.movie_list.entity.Genre
+import com.example.bestapplication.movie_list.entity.MoviePreview
 
 typealias OnMovieClick = (MoviePreview) -> Unit
 

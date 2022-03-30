@@ -11,8 +11,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.bestapplication.R
-import com.example.bestapplication.data.model.Genre
 import com.example.bestapplication.databinding.FragmentMoviesListBinding
+import com.example.bestapplication.movie_list.entity.Genre
 import com.example.bestapplication.utilites.Keys.ID
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_movies_list.*

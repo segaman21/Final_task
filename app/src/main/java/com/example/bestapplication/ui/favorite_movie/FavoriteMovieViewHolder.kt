@@ -5,9 +5,9 @@ import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bestapplication.R
-import com.example.bestapplication.data.database.MovieEntity
-import com.example.bestapplication.data.model.Genre
+import com.example.bestapplication.model.GenreApi
 import com.example.bestapplication.databinding.FragmentItemFavoriteMovieBinding
+import com.example.bestapplication.favorite_movie.entity.MovieDatabaseEntity
 import com.example.bestapplication.utilites.Keys.POSTER_URL
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromString
@@ -19,7 +19,7 @@ class FavoriteMovieViewHolder(
     private val onClick: OnMovieClick
 ) : RecyclerView.ViewHolder(itemBinding.root) {
 
-    private var currentMovie: MovieEntity? = null
+    private var currentMovie: MovieDatabaseEntity? = null
 
     init {
         itemBinding.favoriteMovieCard.setOnClickListener {
@@ -29,10 +29,10 @@ class FavoriteMovieViewHolder(
 
     @SuppressLint("SetTextI18n")
     @ExperimentalSerializationApi
-    fun bind(movie: MovieEntity) {
+    fun bind(movie: MovieDatabaseEntity) {
         currentMovie = movie
         loadPoster(movie.poster, itemBinding.root.context)
-        val genres = Json.decodeFromString<List<Genre>>(movie.genres)
+        val genres = Json.decodeFromString<List<GenreApi>>(movie.genres)
         itemBinding.apply {
             favoriteMovieGenres.text = setGenres(genres)
             favoriteMovieRuntime.text = "${movie.runtime} min"
@@ -41,7 +41,7 @@ class FavoriteMovieViewHolder(
         }
     }
 
-    private fun setGenres(genres: List<Genre>): String {
+    private fun setGenres(genres: List<GenreApi>): String {
         var genresStr = ""
         for (i in genres.indices) {
             genresStr += if (i == genres.size - 1) {

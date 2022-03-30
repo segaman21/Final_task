@@ -16,10 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.bestapplication.R
 import com.example.bestapplication.ui.favorite_movie.FavoriteMovieViewModel
-import com.example.bestapplication.data.model.Actor
-import com.example.bestapplication.data.model.Genre
-import com.example.bestapplication.data.model.MovieFull
 import com.example.bestapplication.databinding.FragmentMoviesDetailsBinding
+import com.example.bestapplication.movie_details.entity.Actor
+import com.example.bestapplication.movie_details.entity.MovieFull
+import com.example.bestapplication.movie_list.entity.Genre
 import com.example.bestapplication.utilites.Keys.ID
 import com.example.bestapplication.utilites.Keys.POSTER_URL
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -77,7 +77,7 @@ class FragmentMoviesDetails : Fragment() {
         detailsMovieViewModel.actorsLiveData.observe(viewLifecycleOwner, {
             actors = it
             if (movieId != null) {
-                detailsMovieViewModel.getMovies(movieId)
+                detailsMovieViewModel.getFullMovies(movieId)
             }
         })
     }
