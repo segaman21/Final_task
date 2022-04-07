@@ -5,8 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bestapplication.R
-import com.example.bestapplication.data.model.Actor
 import com.example.bestapplication.databinding.ViewHolderActorBinding
+import com.example.bestapplication.movie_details.entity.Actor
 import com.example.bestapplication.utilites.Keys.POSTER_URL
 
 class ActorAdapter(private val items: List<Actor>) :

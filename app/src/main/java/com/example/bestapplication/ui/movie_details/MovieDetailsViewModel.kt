@@ -4,29 +4,34 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.bestapplication.data.model.*
-import com.example.bestapplication.data.repository.MoviesRepository
+import com.example.bestapplication.movie_details.entity.Actor
+import com.example.bestapplication.movie_details.entity.MovieFull
+import com.example.bestapplication.movie_details.usecase.GetActorUseCase
+import com.example.bestapplication.movie_details.usecase.GetMovieDetailsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @HiltViewModel
-class MovieDetailsViewModel @Inject constructor(private val repository: MoviesRepository) :
+class MovieDetailsViewModel @Inject constructor(
+    private val getActorUseCase: GetActorUseCase,
+    private val getMovieDetailsUseCase: GetMovieDetailsUseCase
+) :
     ViewModel() {
     private val _moviesLiveData = MutableLiveData<MovieFull>()
     val moviesLiveData: LiveData<MovieFull> get() = _moviesLiveData
     private val _actorsLiveData = MutableLiveData<List<Actor>>()
     val actorsLiveData: LiveData<List<Actor>> get() = _actorsLiveData
 
-    fun getMovies(movieId: Int) {
+    fun getFullMovies(movieId: Int) {
         viewModelScope.launch {
-            _moviesLiveData.value = repository.getMovie(movieId)
+            _moviesLiveData.value = getMovieDetailsUseCase.invoke(movieId)
         }
     }
 
     fun getActors(movieId: Int) {
         viewModelScope.launch {
-            _actorsLiveData.value = repository.getActors(movieId)
+            _actorsLiveData.value = getActorUseCase.invoke(movieId)
         }
     }
 }

@@ -4,15 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.bestapplication.data.model.Genre
-import com.example.bestapplication.data.model.MoviePreview
-import com.example.bestapplication.data.repository.MoviesRepository
+import com.example.bestapplication.movie_list.entity.Genre
+import com.example.bestapplication.movie_list.entity.MoviePreview
+import com.example.bestapplication.movie_list.usecase.GetGenreUseCase
+import com.example.bestapplication.movie_list.usecase.GetMovieListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MovieListViewModel @Inject constructor(private val repository: MoviesRepository) :
+class MovieListViewModel @Inject constructor(
+    private val getGenres:GetGenreUseCase,
+    private val getMovieList: GetMovieListUseCase
+) :
     ViewModel() {
     private val _filmsLiveData = MutableLiveData<List<MoviePreview>>()
     val filmsLiveData: LiveData<List<MoviePreview>> get() = _filmsLiveData
@@ -21,13 +25,13 @@ class MovieListViewModel @Inject constructor(private val repository: MoviesRepos
 
     fun getFilms() {
         viewModelScope.launch {
-            _filmsLiveData.value = repository.loadMovies()
+            _filmsLiveData.value = getMovieList.invoke()
         }
     }
 
     fun getGenres() {
         viewModelScope.launch {
-            _genresLiveData.value = repository.getGenres()
+            _genresLiveData.value = getGenres.invoke()
         }
     }
 }

@@ -51,9 +51,9 @@ class FragmentFavoriteMovies : Fragment() {
         mItemTouchHelper = ItemTouchHelper(callback)
         mItemTouchHelper?.attachToRecyclerView(binding.favoriteMovieList)
         binding.favoriteMovieList.adapter = favoriteMoviesAdapter
-        viewModel.favoriteMovieLiveData.observe(viewLifecycleOwner, { movie ->
+        viewModel.favoriteMovieLiveData.observe(viewLifecycleOwner) { movie ->
             favoriteMoviesAdapter.submitList(movie)
-        })
+        }
     }
 
     override fun onDestroyView() {

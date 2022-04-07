@@ -3,7 +3,7 @@ package com.example.bestapplication.di
 import android.content.Context
 import androidx.room.Room
 import com.example.bestapplication.R
-import com.example.bestapplication.data.database.FavoriteMovieDatabase
+import com.example.bestapplication.database.FavoriteMovieDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,5 +27,6 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideYourDao(db: FavoriteMovieDatabase) = db.movieDao()
+    fun provideYourDao(db: FavoriteMovieDatabase) =
+        db.movieDao()
 }

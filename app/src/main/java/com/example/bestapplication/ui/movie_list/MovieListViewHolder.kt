@@ -6,9 +6,9 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bestapplication.R
-import com.example.bestapplication.data.model.Genre
-import com.example.bestapplication.data.model.MoviePreview
 import com.example.bestapplication.databinding.FragmentMovieBinding
+import com.example.bestapplication.movie_list.entity.Genre
+import com.example.bestapplication.movie_list.entity.MoviePreview
 import com.example.bestapplication.utilites.Keys.POSTER_URL
 
 class MovieListViewHolder(
@@ -82,9 +82,6 @@ class MovieListViewHolder(
         } else {
             setGrayStar(binding.fiveStar)
         }
-
-        if (rate > 10)
-            throw IllegalStateException("Illegal rating value")
     }
 
     private fun setGrayStar(starView: ImageView) {
