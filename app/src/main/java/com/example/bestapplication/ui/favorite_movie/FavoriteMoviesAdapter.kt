@@ -5,13 +5,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.bestapplication.databinding.FragmentItemFavoriteMovieBinding
-import com.example.bestapplication.favorite_movie.entity.MovieDatabaseEntity
+import com.example.bestapplication.favorite_movie.entity.FavoriteMovie
 import kotlinx.serialization.ExperimentalSerializationApi
 
-typealias OnMovieClick = (MovieDatabaseEntity) -> Unit
+typealias OnMovieClick = (FavoriteMovie) -> Unit
 
 class FavoriteMoviesAdapter(private val onClick: OnMovieClick) :
-    ListAdapter<MovieDatabaseEntity, FavoriteMovieViewHolder>(MovieDiffCallback) {
+    ListAdapter<FavoriteMovie, FavoriteMovieViewHolder>(MovieDiffCallback) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -36,17 +36,17 @@ class FavoriteMoviesAdapter(private val onClick: OnMovieClick) :
     }
 }
 
-object MovieDiffCallback : DiffUtil.ItemCallback<MovieDatabaseEntity>() {
+object MovieDiffCallback : DiffUtil.ItemCallback<FavoriteMovie>() {
     override fun areItemsTheSame(
-        oldItem: MovieDatabaseEntity,
-        newItem: MovieDatabaseEntity
+        oldItem: FavoriteMovie,
+        newItem: FavoriteMovie
     ): Boolean {
         return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(
-        oldItem: MovieDatabaseEntity,
-        newItem: MovieDatabaseEntity
+        oldItem: FavoriteMovie,
+        newItem: FavoriteMovie
     ): Boolean {
         return oldItem == newItem
     }

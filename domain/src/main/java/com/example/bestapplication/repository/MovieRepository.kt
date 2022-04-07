@@ -5,7 +5,6 @@ import com.example.bestapplication.movie_details.entity.MovieFull
 import com.example.bestapplication.movie_list.entity.Genre
 import com.example.bestapplication.movie_list.entity.MoviePreview
 
-
 interface MovieRepository {
 
     suspend fun loadMovies(): List<MoviePreview>

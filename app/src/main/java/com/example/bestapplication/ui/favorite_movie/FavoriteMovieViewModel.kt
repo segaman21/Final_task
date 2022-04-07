@@ -1,7 +1,7 @@
 package com.example.bestapplication.ui.favorite_movie
 
 import androidx.lifecycle.*
-import com.example.bestapplication.favorite_movie.entity.MovieDatabaseEntity
+import com.example.bestapplication.favorite_movie.entity.FavoriteMovie
 import com.example.bestapplication.favorite_movie.usecase.CheckMovieInDatabaseUseCase
 import com.example.bestapplication.favorite_movie.usecase.DeleteFromDataBase
 import com.example.bestapplication.favorite_movie.usecase.GetFavoriteMovieUseCase
@@ -23,8 +23,8 @@ class FavoriteMovieViewModel @Inject constructor(
     private val _isFavoriteLiveData = MutableLiveData<Boolean>()
     val isFavoriteLiveData: LiveData<Boolean> get() = _isFavoriteLiveData
 
-    private val _favoriteMovieLiveData = MutableLiveData<List<MovieDatabaseEntity>>()
-    val favoriteMovieLiveData: LiveData<List<MovieDatabaseEntity>> get() = _favoriteMovieLiveData
+    private val _favoriteMovieLiveData = MutableLiveData<List<FavoriteMovie>>()
+    val favoriteMovieLiveData: LiveData<List<FavoriteMovie>> get() = _favoriteMovieLiveData
 
 
     @ExperimentalSerializationApi
@@ -34,7 +34,7 @@ class FavoriteMovieViewModel @Inject constructor(
         }
     }
 
-    fun deleteMovieFromDatabase(movie: MovieDatabaseEntity) {
+    fun deleteMovieFromDatabase(movie: FavoriteMovie) {
         viewModelScope.launch {
             deleteFromDataBase.invoke(movie)
         }

@@ -7,7 +7,7 @@ import com.bumptech.glide.Glide
 import com.example.bestapplication.R
 import com.example.bestapplication.model.GenreApi
 import com.example.bestapplication.databinding.FragmentItemFavoriteMovieBinding
-import com.example.bestapplication.favorite_movie.entity.MovieDatabaseEntity
+import com.example.bestapplication.favorite_movie.entity.FavoriteMovie
 import com.example.bestapplication.utilites.Keys.POSTER_URL
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.decodeFromString
@@ -19,7 +19,7 @@ class FavoriteMovieViewHolder(
     private val onClick: OnMovieClick
 ) : RecyclerView.ViewHolder(itemBinding.root) {
 
-    private var currentMovie: MovieDatabaseEntity? = null
+    private var currentMovie: FavoriteMovie? = null
 
     init {
         itemBinding.favoriteMovieCard.setOnClickListener {
@@ -29,7 +29,7 @@ class FavoriteMovieViewHolder(
 
     @SuppressLint("SetTextI18n")
     @ExperimentalSerializationApi
-    fun bind(movie: MovieDatabaseEntity) {
+    fun bind(movie: FavoriteMovie) {
         currentMovie = movie
         loadPoster(movie.poster, itemBinding.root.context)
         val genres = Json.decodeFromString<List<GenreApi>>(movie.genres)

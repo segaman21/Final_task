@@ -71,15 +71,15 @@ class FragmentMoviesDetails : Fragment() {
 
     private fun initObservers(movieId: Int?) {
         var actors: List<Actor>? = null
-        detailsMovieViewModel.moviesLiveData.observe(viewLifecycleOwner, {
+        detailsMovieViewModel.moviesLiveData.observe(viewLifecycleOwner) {
             bind(it, actors)
-        })
-        detailsMovieViewModel.actorsLiveData.observe(viewLifecycleOwner, {
+        }
+        detailsMovieViewModel.actorsLiveData.observe(viewLifecycleOwner) {
             actors = it
             if (movieId != null) {
                 detailsMovieViewModel.getFullMovies(movieId)
             }
-        })
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -165,14 +165,14 @@ class FragmentMoviesDetails : Fragment() {
     }
 
     private fun initMovieInDatabaseListener(fab: FloatingActionButton) {
-        favoriteMovieViewModel.isFavoriteLiveData.observe(viewLifecycleOwner, {
+        favoriteMovieViewModel.isFavoriteLiveData.observe(viewLifecycleOwner) {
             if (it) {
                 val params = fab.layoutParams as CoordinatorLayout.LayoutParams
                 val behavior = params.behavior as? FloatingActionButton.Behavior
                 behavior?.isAutoHideEnabled = false
                 fab.hide()
             }
-        })
+        }
     }
 
     private fun hideAppBar(fab: FloatingActionButton) {

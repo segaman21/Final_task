@@ -1,6 +1,6 @@
 package com.example.bestapplication.favorite_movie.entity
 
-data class MovieDatabaseEntity(
+data class FavoriteMovie(
     val id: Int,
     val poster: String,
     val title: String,

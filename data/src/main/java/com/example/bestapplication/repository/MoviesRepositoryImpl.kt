@@ -1,6 +1,9 @@
 package com.example.bestapplication.repository
 
 import com.example.bestapplication.Mapper
+import com.example.bestapplication.model.ActorApi
+import com.example.bestapplication.model.GenreApi
+import com.example.bestapplication.model.MoviePreviewApi
 import com.example.bestapplication.movie_details.entity.Actor
 import com.example.bestapplication.movie_details.entity.MovieFull
 import com.example.bestapplication.movie_list.entity.Genre
@@ -20,32 +23,28 @@ class MoviesRepositoryImpl @Inject constructor(private val api: NetworkApi) : Mo
     private val page = 1
 
     override suspend fun loadMovies(): List<MoviePreview> {
-        val moviePreviewList: List<MoviePreview>?
-        moviePreviewList = withContext(Dispatchers.IO) {
-            Mapper.mapMoviePreview(api.getMovieList(apiKey, lang, page).results)
+        val moviePreviewList = withContext(Dispatchers.IO) {
+            api.getMovieList(apiKey, lang, page).results
         }
-        return moviePreviewList
+        return moviePreviewList.map { Mapper.mapMoviePreview(it) }
     }
 
     override suspend fun loadGenres(): List<Genre> {
-        val genres: List<Genre>?
-        genres = withContext(Dispatchers.IO) {
-            Mapper.mapGenre(api.getGenres(apiKey, lang).genres)
+        val genres = withContext(Dispatchers.IO) {
+            api.getGenres(apiKey, lang).genres
         }
-        return genres
+        return genres.map { Mapper.mapGenre(it) }
     }
 
     override suspend fun loadActors(movieId: Int): List<Actor> {
-        val actors: List<Actor>?
-        actors = withContext(Dispatchers.IO) {
-            Mapper.mapActors(api.getActors(movieId, apiKey, lang).actors)
+        val actors = withContext(Dispatchers.IO) {
+            api.getActors(movieId, apiKey, lang).actors
         }
-        return actors
+        return actors.map { Mapper.mapActors(it) }
     }
 
     override suspend fun loadFullMovie(movieId: Int): MovieFull {
-        val movieFull: MovieFull?
-        movieFull = withContext(Dispatchers.IO) {
+        val movieFull = withContext(Dispatchers.IO) {
             Mapper.mapFullMovie(api.getFullMovie(movieId, apiKey, lang))
         }
         return movieFull

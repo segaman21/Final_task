@@ -3,8 +3,9 @@ package com.example.bestapplication.repository
 import com.example.bestapplication.Mapper
 import com.example.bestapplication.model.MovieFullApi
 import com.example.bestapplication.database.MovieDao
-import com.example.bestapplication.database.MovieEntity
-import com.example.bestapplication.favorite_movie.entity.MovieDatabaseEntity
+import com.example.bestapplication.database.MovieDatabaseEntity
+import com.example.bestapplication.favorite_movie.entity.FavoriteMovie
+import com.example.bestapplication.model.ActorApi
 import com.example.bestapplication.network.NetworkApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -26,7 +27,7 @@ class FavoriteMovieRepositoryImpl @Inject constructor(
     @ExperimentalSerializationApi
     override suspend fun insertToDataBase(movieId: Int) {
         val movieFull: MovieFullApi
-        val movieDetailsEntity: MovieEntity
+        val movieDetailsEntity: MovieDatabaseEntity
         try {
             movieFull = withContext(Dispatchers.IO) {
                 api.getFullMovie(movieId, apiKey, lang)
@@ -40,7 +41,7 @@ class FavoriteMovieRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun deleteFromDataBase(movie: MovieDatabaseEntity) =
+    override suspend fun deleteFromDataBase(movie: FavoriteMovie) =
         withContext(Dispatchers.IO) {
             movieDao.delete(Mapper.mapMoviesInDb(movie))
         }
@@ -50,10 +51,14 @@ class FavoriteMovieRepositoryImpl @Inject constructor(
     }
 
 
-    override suspend fun getFavoriteMovie(): Flow<List<MovieDatabaseEntity>> =
-        withContext(Dispatchers.IO) {
-            movieDao.getAllMovies().flatMapMerge {
-                flowOf(Mapper.mapMoviesFromDb(it))
+    override suspend fun getFavoriteMovie(): Flow<List<FavoriteMovie>> {
+        val favoriteMovie = withContext(Dispatchers.IO) {
+            movieDao.getAllMovies()
+        }
+        return favoriteMovie.map { movieEntityList ->
+            movieEntityList.map {
+                Mapper.mapMoviesFromDb(it)
             }
         }
+    }
 }

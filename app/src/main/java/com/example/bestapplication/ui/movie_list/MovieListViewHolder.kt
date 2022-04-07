@@ -82,9 +82,6 @@ class MovieListViewHolder(
         } else {
             setGrayStar(binding.fiveStar)
         }
-
-        if (rate > 10)
-            throw IllegalStateException("Illegal rating value")
     }
 
     private fun setGrayStar(starView: ImageView) {

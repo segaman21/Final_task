@@ -4,8 +4,8 @@ import com.example.bestapplication.model.ActorApi
 import com.example.bestapplication.model.GenreApi
 import com.example.bestapplication.model.MovieFullApi
 import com.example.bestapplication.model.MoviePreviewApi
-import com.example.bestapplication.database.MovieEntity
-import com.example.bestapplication.favorite_movie.entity.MovieDatabaseEntity
+import com.example.bestapplication.database.MovieDatabaseEntity
+import com.example.bestapplication.favorite_movie.entity.FavoriteMovie
 import com.example.bestapplication.movie_details.entity.Actor
 import com.example.bestapplication.movie_details.entity.MovieFull
 import com.example.bestapplication.movie_list.entity.Genre
@@ -19,10 +19,10 @@ object Mapper {
 
 
     @ExperimentalSerializationApi
-    fun mapMoviesListToDb(movie: MovieFullApi): MovieEntity {
+    fun mapMoviesListToDb(movie: MovieFullApi): MovieDatabaseEntity {
 
         val genres = Json.encodeToString(movie.genres)
-        return MovieEntity(
+        return MovieDatabaseEntity(
             movie.id,
             movie.poster,
             movie.title,
@@ -32,9 +32,9 @@ object Mapper {
         )
     }
 
-    fun mapMoviesInDb(movie: MovieDatabaseEntity): MovieEntity {
+    fun mapMoviesInDb(movie: FavoriteMovie): MovieDatabaseEntity {
 
-        return MovieEntity(
+        return MovieDatabaseEntity(
             movie.id,
             movie.poster,
             movie.title,
@@ -44,43 +44,39 @@ object Mapper {
         )
     }
 
-    fun mapMoviesFromDb(movie: List<MovieEntity>): List<MovieDatabaseEntity> {
+    fun mapMoviesFromDb(movie: MovieDatabaseEntity): FavoriteMovie {
 
-        return movie.map {
-            MovieDatabaseEntity(
-                it.id,
-                it.poster,
-                it.title,
-                it.ratings,
-                it.genres,
-                it.runtime
-            )
-        }
+        return FavoriteMovie(
+            movie.id,
+            movie.poster,
+            movie.title,
+            movie.ratings,
+            movie.genres,
+            movie.runtime
+        )
+
     }
 
-    fun mapMoviePreview(movie: List<MoviePreviewApi>): List<MoviePreview> {
+    fun mapMoviePreview(movie: MoviePreviewApi): MoviePreview {
 
-        return movie.map { movie ->
-            MoviePreview(
-                movie.id,
-                movie.title,
-                movie.poster,
-                movie.ratings,
-                movie.numberOfRatings,
-                movie.genres,
-                movie.minimumAge
-            )
-        }
+        return MoviePreview(
+            movie.id,
+            movie.title,
+            movie.poster,
+            movie.ratings,
+            movie.numberOfRatings,
+            movie.genres,
+            movie.minimumAge
+        )
     }
 
-    fun mapGenre(movie: List<GenreApi>): List<Genre> {
 
-        return movie.map {
-            Genre(
-                it.id,
-                it.name
-            )
-        }
+    fun mapGenre(movie: GenreApi): Genre {
+
+        return Genre(
+            movie.id,
+            movie.name
+        )
     }
 
     fun mapFullMovie(movie: MovieFullApi): MovieFull {
@@ -92,22 +88,30 @@ object Mapper {
             movie.backdrop,
             movie.ratings,
             movie.numberOfRatings,
-            mapGenre(movie.genres),
+            mapGenreInFullMovie(movie.genres),
             movie.minimumAge,
             movie.runtime,
             movie.poster,
         )
     }
 
-
-    fun mapActors(movie: List<ActorApi>): List<Actor> {
+    private fun mapGenreInFullMovie(movie: List<GenreApi>): List<Genre> {
 
         return movie.map {
-            Actor(
+            Genre(
                 it.id,
-                it.name,
-                it.picture
+                it.name
             )
         }
     }
+
+    fun mapActors(movie: ActorApi): Actor {
+
+        return Actor(
+            movie.id,
+            movie.name,
+            movie.picture
+        )
+    }
+
 }
