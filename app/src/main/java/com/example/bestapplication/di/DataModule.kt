@@ -31,5 +31,4 @@ class DataModule {
         return FavoriteMovieRepositoryImpl(dao, api)
     }
 
-
 }

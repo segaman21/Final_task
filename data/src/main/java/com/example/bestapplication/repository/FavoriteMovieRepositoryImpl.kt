@@ -5,17 +5,13 @@ import com.example.bestapplication.model.MovieFullApi
 import com.example.bestapplication.database.MovieDao
 import com.example.bestapplication.database.MovieDatabaseEntity
 import com.example.bestapplication.favorite_movie.entity.FavoriteMovie
-import com.example.bestapplication.model.ActorApi
 import com.example.bestapplication.network.NetworkApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class FavoriteMovieRepositoryImpl @Inject constructor(
+class FavoriteMovieRepositoryImpl (
     private val movieDao: MovieDao,
     private val api: NetworkApi
 ) : FavoriteMovieRepository {

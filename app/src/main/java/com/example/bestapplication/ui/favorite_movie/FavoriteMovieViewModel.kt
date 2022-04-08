@@ -3,7 +3,7 @@ package com.example.bestapplication.ui.favorite_movie
 import androidx.lifecycle.*
 import com.example.bestapplication.favorite_movie.entity.FavoriteMovie
 import com.example.bestapplication.favorite_movie.usecase.CheckMovieInDatabaseUseCase
-import com.example.bestapplication.favorite_movie.usecase.DeleteFromDataBase
+import com.example.bestapplication.favorite_movie.usecase.DeleteFromDataBaseUseCase
 import com.example.bestapplication.favorite_movie.usecase.GetFavoriteMovieUseCase
 import com.example.bestapplication.favorite_movie.usecase.InsertToDataBaseUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +15,7 @@ import javax.inject.Inject
 class FavoriteMovieViewModel @Inject constructor(
     private val getFavoriteMovieUseCase: GetFavoriteMovieUseCase,
     private val insertToDataBaseUseCase: InsertToDataBaseUseCase,
-    private val deleteFromDataBase: DeleteFromDataBase,
+    private val deleteFromDataBase: DeleteFromDataBaseUseCase,
     private val checkMovieInDatabaseUseCase: CheckMovieInDatabaseUseCase
 ) :
     ViewModel() {

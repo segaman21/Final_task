@@ -1,9 +1,6 @@
 package com.example.bestapplication.repository
 
 import com.example.bestapplication.Mapper
-import com.example.bestapplication.model.ActorApi
-import com.example.bestapplication.model.GenreApi
-import com.example.bestapplication.model.MoviePreviewApi
 import com.example.bestapplication.movie_details.entity.Actor
 import com.example.bestapplication.movie_details.entity.MovieFull
 import com.example.bestapplication.movie_list.entity.Genre
@@ -11,12 +8,8 @@ import com.example.bestapplication.movie_list.entity.MoviePreview
 import com.example.bestapplication.network.NetworkApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
-import javax.inject.Singleton
 
-
-@Singleton
-class MoviesRepositoryImpl @Inject constructor(private val api: NetworkApi) : MovieRepository {
+class MoviesRepositoryImpl (private val api: NetworkApi) : MovieRepository {
 
     private val lang = "en-US"
     private val apiKey = "641666dd6d279ab35afbe0cdfe384006"
