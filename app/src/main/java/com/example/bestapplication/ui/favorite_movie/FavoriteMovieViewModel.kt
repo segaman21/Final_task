@@ -6,12 +6,10 @@ import com.example.bestapplication.favorite_movie.usecase.CheckMovieInDatabaseUs
 import com.example.bestapplication.favorite_movie.usecase.DeleteFromDataBaseUseCase
 import com.example.bestapplication.favorite_movie.usecase.GetFavoriteMovieUseCase
 import com.example.bestapplication.favorite_movie.usecase.InsertToDataBaseUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import kotlinx.serialization.ExperimentalSerializationApi
 import javax.inject.Inject
 
-@HiltViewModel
 class FavoriteMovieViewModel @Inject constructor(
     private val getFavoriteMovieUseCase: GetFavoriteMovieUseCase,
     private val insertToDataBaseUseCase: InsertToDataBaseUseCase,

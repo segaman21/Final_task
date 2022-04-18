@@ -1,4 +1,4 @@
-package com.example.bestapplication.di
+package com.example.bestapplication.di.modules
 
 import android.content.Context
 import androidx.room.Room
@@ -6,21 +6,15 @@ import com.example.bestapplication.R
 import com.example.bestapplication.database.FavoriteMovieDatabase
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
-object DatabaseModule {
+class DatabaseModule() {
 
     @Singleton
     @Provides
-    fun provideYourDatabase(
-        @ApplicationContext app: Context
-    ) = Room.databaseBuilder(
-        app,
+    fun provideYourDatabase(context: Context) = Room.databaseBuilder(
+        context,
         FavoriteMovieDatabase::class.java,
         "${R.string.name_database}"
     ).build()

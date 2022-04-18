@@ -8,13 +8,11 @@ import com.example.bestapplication.movie_list.entity.Genre
 import com.example.bestapplication.movie_list.entity.MoviePreview
 import com.example.bestapplication.movie_list.usecase.GetGenreUseCase
 import com.example.bestapplication.movie_list.usecase.GetMovieListUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
 class MovieListViewModel @Inject constructor(
-    private val getGenres:GetGenreUseCase,
+    private val getGenres: GetGenreUseCase,
     private val getMovieList: GetMovieListUseCase
 ) :
     ViewModel() {

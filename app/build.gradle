@@ -4,7 +4,6 @@ plugins {
     id 'org.jetbrains.kotlin.plugin.serialization'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
-    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -75,9 +74,13 @@ dependencies {
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
 
-    //Hilt
-    implementation("com.google.dagger:hilt-android:$hilt_version")
-    kapt("com.google.dagger:hilt-android-compiler:$hilt_version")
+    //Dagger
+    kapt "com.google.dagger:dagger-compiler:2.41"
+    implementation "com.google.dagger:dagger:2.41"
+    implementation 'javax.inject:javax.inject:1'
+    implementation "com.google.dagger:dagger-android-support:2.41"
+    kapt "com.google.dagger:dagger-android-processor:2.41"
+
 
     //Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.4.2")

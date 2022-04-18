@@ -1,4 +1,4 @@
-package com.example.bestapplication.di
+package com.example.bestapplication.di.modules
 
 import com.example.bestapplication.favorite_movie.usecase.CheckMovieInDatabaseUseCase
 import com.example.bestapplication.favorite_movie.usecase.DeleteFromDataBaseUseCase
@@ -12,13 +12,10 @@ import com.example.bestapplication.repository.FavoriteMovieRepository
 import com.example.bestapplication.repository.MovieRepository
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
-class DomainModule {
+internal object DomainModule {
 
     @Singleton
     @Provides
