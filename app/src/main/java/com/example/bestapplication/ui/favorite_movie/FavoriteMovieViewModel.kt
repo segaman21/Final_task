@@ -24,7 +24,6 @@ class FavoriteMovieViewModel @Inject constructor(
     private val _favoriteMovieLiveData = MutableLiveData<List<FavoriteMovie>>()
     val favoriteMovieLiveData: LiveData<List<FavoriteMovie>> get() = _favoriteMovieLiveData
 
-
     @ExperimentalSerializationApi
     fun insertMovieToDatabase(movieId: Int) {
         viewModelScope.launch {
