@@ -19,6 +19,5 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
     testImplementation "org.mockito:mockito-core:4.0.0"
     testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
-    implementation 'javax.inject:javax.inject:1'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0"
 }
