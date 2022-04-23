@@ -27,5 +27,4 @@ internal object DataModule {
     ): FavoriteMovieRepository {
         return FavoriteMovieRepositoryImpl(dao, api)
     }
-
 }

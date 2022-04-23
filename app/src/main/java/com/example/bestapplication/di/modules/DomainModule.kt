@@ -56,5 +56,4 @@ internal object DomainModule {
     @Provides
     fun provideGetMovieListUseCase(movieRepository: MovieRepository) =
         GetMovieListUseCase(movieRepository)
-
 }

@@ -18,8 +18,4 @@ abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract fun contributeFragmentFavoriteMovies(): FragmentFavoriteMovies
-
-//    @ContributesAndroidInjector
-//    abstract fun contributeViewPagerFragment(): ViewPagerFragment
-
 }
