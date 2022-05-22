@@ -12,6 +12,7 @@ import com.example.bestapplication.utilites.MOVIE_LIST_PAGE_INDEX
 import com.example.bestapplication.utilites.MoviePagerAdapter
 import com.example.bestapplication.utilites.SwitchThemeListener
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_view_pager.*
 
 class ViewPagerFragment : Fragment() {

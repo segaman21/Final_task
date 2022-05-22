@@ -9,8 +9,8 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -23,16 +23,25 @@ import com.example.bestapplication.movie_list.entity.Genre
 import com.example.bestapplication.utilites.Keys.ID
 import com.example.bestapplication.utilites.Keys.POSTER_URL
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import dagger.hilt.android.AndroidEntryPoint
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_movies_details.*
 import kotlinx.serialization.ExperimentalSerializationApi
+import javax.inject.Inject
 
-@AndroidEntryPoint
-class FragmentMoviesDetails : Fragment() {
-    private val detailsMovieViewModel by viewModels<MovieDetailsViewModel>()
-    private val favoriteMovieViewModel by viewModels<FavoriteMovieViewModel>()
+class FragmentMoviesDetails : DaggerFragment() {
+
     private var _binding: FragmentMoviesDetailsBinding? = null
     private val binding get() = _binding!!
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val detailsMovieViewModel: MovieDetailsViewModel by viewModels {
+        viewModelFactory
+    }
+    private val favoriteMovieViewModel: FavoriteMovieViewModel by viewModels {
+        viewModelFactory
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

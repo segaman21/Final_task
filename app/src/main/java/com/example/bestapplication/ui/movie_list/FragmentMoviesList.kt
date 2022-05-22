@@ -6,23 +6,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.bestapplication.R
 import com.example.bestapplication.databinding.FragmentMoviesListBinding
 import com.example.bestapplication.movie_list.entity.Genre
 import com.example.bestapplication.utilites.Keys.ID
-import dagger.hilt.android.AndroidEntryPoint
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_movies_list.*
+import javax.inject.Inject
 
-@AndroidEntryPoint
-class FragmentMoviesList : Fragment() {
+class FragmentMoviesList : DaggerFragment() {
     private var _binding: FragmentMoviesListBinding? = null
     private val binding get() = _binding!!
     private var genreList = listOf<Genre>()
-    private val viewModel by viewModels<MovieListViewModel>()
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel: MovieListViewModel by viewModels {
+        viewModelFactory
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,6 +36,7 @@ class FragmentMoviesList : Fragment() {
     ): View {
         _binding = FragmentMoviesListBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

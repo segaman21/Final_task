@@ -5,22 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.bestapplication.R
 import com.example.bestapplication.utilites.SwipeHelperCallback
 import com.example.bestapplication.databinding.FragmentFavoriteMoviesBinding
 import com.example.bestapplication.utilites.Keys.ID
-import dagger.hilt.android.AndroidEntryPoint
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
-@AndroidEntryPoint
-class FragmentFavoriteMovies : Fragment() {
+class FragmentFavoriteMovies : DaggerFragment() {
     private var _binding: FragmentFavoriteMoviesBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: FavoriteMovieViewModel by viewModels()
     private var mItemTouchHelper: ItemTouchHelper? = null
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+    private val viewModel: FavoriteMovieViewModel by viewModels {
+        viewModelFactory
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

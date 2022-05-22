@@ -1,4 +1,4 @@
-package com.example.bestapplication.di
+package com.example.bestapplication.di.modules
 
 import com.example.bestapplication.database.MovieDao
 import com.example.bestapplication.network.NetworkApi
@@ -8,13 +8,10 @@ import com.example.bestapplication.repository.MovieRepository
 import com.example.bestapplication.repository.MoviesRepositoryImpl
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@Module
-@InstallIn(SingletonComponent::class)
-class DataModule {
+@Module(includes = [DatabaseModule::class, NetworkModule::class])
+internal object DataModule {
 
     @Singleton
     @Provides
@@ -30,5 +27,4 @@ class DataModule {
     ): FavoriteMovieRepository {
         return FavoriteMovieRepositoryImpl(dao, api)
     }
-
 }

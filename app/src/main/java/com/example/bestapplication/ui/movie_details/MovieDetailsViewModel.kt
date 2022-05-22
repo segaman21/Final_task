@@ -8,11 +8,9 @@ import com.example.bestapplication.movie_details.entity.Actor
 import com.example.bestapplication.movie_details.entity.MovieFull
 import com.example.bestapplication.movie_details.usecase.GetActorUseCase
 import com.example.bestapplication.movie_details.usecase.GetMovieDetailsUseCase
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
 
-@HiltViewModel
 class MovieDetailsViewModel @Inject constructor(
     private val getActorUseCase: GetActorUseCase,
     private val getMovieDetailsUseCase: GetMovieDetailsUseCase
