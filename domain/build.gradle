@@ -19,5 +19,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
     testImplementation "org.mockito:mockito-core:4.0.0"
     testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
+    testImplementation "io.mockk:mockk:1.10.0"
+    testImplementation 'junit:junit:4.+'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0"
 }
