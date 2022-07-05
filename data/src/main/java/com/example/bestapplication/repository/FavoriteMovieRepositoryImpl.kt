@@ -19,7 +19,6 @@ class FavoriteMovieRepositoryImpl (
     private val lang = "en-US"
     private val apiKey = "641666dd6d279ab35afbe0cdfe384006"
 
-
     @ExperimentalSerializationApi
     override suspend fun insertToDataBase(movieId: Int) {
         val movieFull: MovieFullApi
