@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
 
-class FavoriteMovieRepositoryImpl (
+class FavoriteMovieRepositoryImpl(
     private val movieDao: MovieDao,
     private val api: NetworkApi
 ) : FavoriteMovieRepository {
@@ -56,4 +56,17 @@ class FavoriteMovieRepositoryImpl (
             }
         }
     }
+
+    override suspend fun getFindMovie(name: String): Flow<List<FavoriteMovie>> {
+        val favoriteMovie = withContext(Dispatchers.IO) {
+            movieDao.getFindMovies(name)
+        }
+       return favoriteMovie.map { movieEntityList ->
+            movieEntityList.map {
+                Mapper.mapMoviesFromDb(it)
+            }
+        }
+    }
+
+
 }

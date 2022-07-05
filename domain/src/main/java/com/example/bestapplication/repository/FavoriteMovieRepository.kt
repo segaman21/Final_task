@@ -13,4 +13,6 @@ interface FavoriteMovieRepository {
     suspend fun checkInDataBase(movieId: Int): Boolean
 
     suspend fun getFavoriteMovie(): Flow<List<FavoriteMovie>>
+
+    suspend fun getFindMovie(name: String): Flow<List<FavoriteMovie>>
 }

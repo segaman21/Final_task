@@ -17,4 +17,8 @@ interface MovieDao {
 
     @Query("SELECT * FROM favorite_movie WHERE id=:movieId")
     fun check(movieId:Int): MovieDatabaseEntity?
+
+    @Query("SELECT * FROM favorite_movie WHERE original_title=:name")
+    fun getFindMovies(name: String): Flow<List<MovieDatabaseEntity>>
+
 }

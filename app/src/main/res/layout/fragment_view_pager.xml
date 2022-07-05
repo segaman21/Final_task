@@ -22,7 +22,7 @@
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/toolbar_layout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_scrollFlags="scroll|snap"
                 app:toolbarId="@id/toolbar">
@@ -33,30 +33,57 @@
                     android:layout_height="?attr/actionBarSize"
                     app:layout_collapseMode="parallax">
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:layout_width="wrap_content"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/view_pager_toolbar_margin_end_text"
-                        android:src="@drawable/ic_round_gps_fixed_24" />
+                        android:layout_margin="8dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/view_pager_toolbar_margin_start_text"
-                        android:text="@string/movies_details" />
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/search_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:src="@drawable/ic_round_gps_fixed_24"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:layout_marginEnd="@dimen/view_pager_toolbar_margin_end_text"
-                        android:text="@string/switch_theme" />
+                        <EditText
+                            android:id="@+id/search_movie"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/movies_details"
+                            android:textSize="11sp"
+                            app:layout_constraintStart_toEndOf="@id/search_image"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.material.switchmaterial.SwitchMaterial
-                        android:id="@+id/switch_theme"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/moviesList"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="14dp"
+                            android:clipToPadding="false"
+                            android:paddingHorizontal="19dp"
+                            app:layout_constraintEnd_toEndOf="@id/search_movie"
+                            app:layout_constraintStart_toStartOf="@id/search_movie"
+                            app:layout_constraintTop_toBottomOf="@id/search_movie" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="@dimen/view_pager_toolbar_margin_end_text"
+                            android:text="@string/switch_theme"
+                            app:layout_constraintStart_toEndOf="@id/switch_theme"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.switchmaterial.SwitchMaterial
+                            android:id="@+id/switch_theme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            app:layout_constraintStart_toEndOf="@id/search_movie"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </com.google.android.material.appbar.MaterialToolbar>
 
