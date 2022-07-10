@@ -14,5 +14,5 @@ interface FavoriteMovieRepository {
 
     suspend fun getFavoriteMovie(): Flow<List<FavoriteMovie>>
 
-    suspend fun getFindMovie(name: String): Flow<List<FavoriteMovie>>
+    suspend fun getFindMovie(name: String): List<FavoriteMovie>
 }

@@ -10,12 +10,12 @@
         android:id="@+id/image_actor"
         android:layout_width="@dimen/view_holder_actor_dimen"
         android:layout_height="@dimen/view_holder_actor_dimen"
-        android:src="@drawable/ironman" />
+        android:src="@drawable/ic_download"/>
 
     <TextView
         android:id="@+id/name_actor"
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_holder_name_actor_dimen"
-        android:gravity="center"/>
+        android:gravity="center" />
 
 </LinearLayout>

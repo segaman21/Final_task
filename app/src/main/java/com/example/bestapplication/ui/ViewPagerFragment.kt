@@ -14,7 +14,6 @@ import com.example.bestapplication.ui.favorite_movie.FavoriteMovieViewModel
 import com.example.bestapplication.utilites.*
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_view_pager.*
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import kotlinx.coroutines.launch
@@ -65,16 +64,16 @@ class ViewPagerFragment : DaggerFragment() {
 
         if (savedInstanceState == null) {
             lifecycleScope.launch {
-                favoriteMovieViewModel.findMovieInDatabase("")
+                favoriteMovieViewModel.queryChannel.send("")
             }
         }
         binding.searchMovie.afterTextChanged {
             lifecycleScope.launch {
-                favoriteMovieViewModel.findMovieInDatabase(it)
+                favoriteMovieViewModel.queryChannel.send(it)
             }
         }
 
-        favoriteMovieViewModel.findMovieLiveData.observe(viewLifecycleOwner) {
+        favoriteMovieViewModel.searchResult.observe(viewLifecycleOwner) {
             moviesAdapter.submitList(it)
         }
     }

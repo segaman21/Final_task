@@ -30,12 +30,13 @@ class FavoriteMovieViewModel @Inject constructor(
     private val _favoriteMovieLiveData = MutableLiveData<List<FavoriteMovie>>()
     val favoriteMovieLiveData: LiveData<List<FavoriteMovie>> get() = _favoriteMovieLiveData
 
-    private val _findMovieLiveData = MutableLiveData<List<FavoriteMovie>>()
-    val findMovieLiveData: LiveData<List<FavoriteMovie>> get() = _findMovieLiveData
+//    private val _findMovieLiveData = MutableLiveData<List<FavoriteMovie>>()
+//    val findMovieLiveData: LiveData<List<FavoriteMovie>> get() = _findMovieLiveData
 
 
     @OptIn(ObsoleteCoroutinesApi::class)
     val queryChannel = BroadcastChannel<String>(Channel.CONFLATED)
+
 
     @ExperimentalSerializationApi
     fun insertMovieToDatabase(movieId: Int) {
@@ -64,23 +65,24 @@ class FavoriteMovieViewModel @Inject constructor(
         }
     }
 
-//    @OptIn(ObsoleteCoroutinesApi::class, FlowPreview::class, ExperimentalCoroutinesApi::class)
-//    private val _searchResult = queryChannel
-//        .asFlow()
-//        .debounce(500)
-//        .mapLatest { search ->
-//            getFavoriteMovieUseCase.findMovie(name = search)
-//        }
-//
-//        .asLiveData(viewModelScope.coroutineContext)
-//
-//    val searchResult: LiveData<Flow<List<FavoriteMovie>>> get() = _searchResult
-
-    fun findMovieInDatabase(name: String) {
-        viewModelScope.launch {
-            getFavoriteMovieUseCase.findMovie(name = name).collect {
-                _findMovieLiveData.postValue(it)
-            }
+    @OptIn(ObsoleteCoroutinesApi::class, FlowPreview::class, ExperimentalCoroutinesApi::class)
+    private val _searchResult = queryChannel
+        .asFlow()
+        .debounce(500)
+        .mapLatest { search ->
+            getFavoriteMovieUseCase.findMovie(name = search)
         }
-    }
+        .asLiveData(viewModelScope.coroutineContext)
+
+    val searchResult: LiveData<List<FavoriteMovie>> get() = _searchResult
+
+
+//
+//    fun findMovieInDatabase(name: String) {
+//        viewModelScope.launch {
+//            getFavoriteMovieUseCase.findMovie(name = name).collect {
+//                _findMovieLiveData.postValue(it)
+//            }
+//        }
+//    }
 }

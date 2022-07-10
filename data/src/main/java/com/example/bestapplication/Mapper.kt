@@ -57,6 +57,20 @@ object Mapper {
 
     }
 
+    fun mapFindMoviesFromDb(movie: List<MovieDatabaseEntity>): List<FavoriteMovie> {
+
+        return movie.map {
+            FavoriteMovie(
+                it.id,
+                it.poster,
+                it.title,
+                it.ratings,
+                it.genres,
+                it.runtime
+            )
+        }
+    }
+
     fun mapMoviePreview(movie: MoviePreviewApi): MoviePreview {
 
         return MoviePreview(

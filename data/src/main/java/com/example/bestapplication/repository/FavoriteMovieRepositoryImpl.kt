@@ -57,16 +57,14 @@ class FavoriteMovieRepositoryImpl(
         }
     }
 
-    override suspend fun getFindMovie(name: String): Flow<List<FavoriteMovie>> {
+    override suspend fun getFindMovie(name: String): List<FavoriteMovie> {
         val favoriteMovie = withContext(Dispatchers.IO) {
             movieDao.getFindMovies(name)
         }
-       return favoriteMovie.map { movieEntityList ->
-            movieEntityList.map {
-                Mapper.mapMoviesFromDb(it)
-            }
-        }
+        return Mapper.mapFindMoviesFromDb(favoriteMovie)
+
     }
-
-
 }
+
+
+
