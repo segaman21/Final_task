@@ -29,7 +29,6 @@ import kotlinx.serialization.ExperimentalSerializationApi
 import javax.inject.Inject
 
 class FragmentMoviesDetails : DaggerFragment() {
-
     private var _binding: FragmentMoviesDetailsBinding? = null
     private val binding get() = _binding!!
 
@@ -69,6 +68,9 @@ class FragmentMoviesDetails : DaggerFragment() {
         }
         toolbar.setNavigationOnClickListener { view ->
             view.findNavController().navigateUp()
+        }
+        detailsMovieViewModel.errorLiveData.observe(viewLifecycleOwner) {
+            Toast.makeText(context, getString(it), Toast.LENGTH_SHORT).show()
         }
     }
 

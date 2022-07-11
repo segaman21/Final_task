@@ -14,8 +14,7 @@ import com.example.bestapplication.utilites.Keys.POSTER_URL
 class MovieListViewHolder(
     private val binding: FragmentMovieBinding,
     onClick: OnMovieClick
-) :
-    RecyclerView.ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
     private var currentFilm: MoviePreview? = null
 
     init {

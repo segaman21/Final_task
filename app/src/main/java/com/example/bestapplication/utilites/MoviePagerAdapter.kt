@@ -10,7 +10,8 @@ const val MOVIE_LIST_PAGE_INDEX = 0
 const val MOVIE_FAVORITE_PAGE_INDEX = 1
 const val MOVIE_SEARCH_PAGE_INDEX = 2
 
-class MoviePagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+class MoviePagerAdapter(fragment: Fragment) :
+    FragmentStateAdapter(fragment) {
 
     private val tabFragmentsCreators: Map<Int, () -> Fragment> = mapOf(
         MOVIE_LIST_PAGE_INDEX to { FragmentMoviesList() },

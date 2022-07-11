@@ -171,7 +171,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/movie_details_cast_title_top_dimen"
-                android:text="@string/cast_title"
                 android:textSize="@dimen/movie_details_cast_title_size"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="@+id/textView_story"
