@@ -2,7 +2,6 @@ package com.example.bestapplication.ui.favorite_movie
 
 import android.util.Log
 import androidx.lifecycle.*
-import com.example.bestapplication.*
 import com.example.bestapplication.favorite_movie.entity.FavoriteMovie
 import com.example.bestapplication.favorite_movie.usecase.CheckMovieInDatabaseUseCase
 import com.example.bestapplication.favorite_movie.usecase.DeleteFromDataBaseUseCase
@@ -25,8 +24,7 @@ class FavoriteMovieViewModel @Inject constructor(
     private val insertToDataBaseUseCase: InsertToDataBaseUseCase,
     private val deleteFromDataBase: DeleteFromDataBaseUseCase,
     private val checkMovieInDatabaseUseCase: CheckMovieInDatabaseUseCase
-) :
-    ViewModel() {
+) : ViewModel() {
 
     private val _isFavoriteLiveData = MutableLiveData<Boolean>()
     val isFavoriteLiveData: LiveData<Boolean> get() = _isFavoriteLiveData

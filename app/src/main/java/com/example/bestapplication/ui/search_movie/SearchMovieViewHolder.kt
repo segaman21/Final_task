@@ -7,7 +7,6 @@ import com.example.bestapplication.databinding.SearchMovieItemBinding
 import com.example.bestapplication.favorite_movie.entity.FavoriteMovie
 import com.example.bestapplication.utilites.Keys
 
-
 class SearchMovieViewHolder(private val binding: SearchMovieItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 

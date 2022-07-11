@@ -62,7 +62,6 @@ class FavoriteMovieRepositoryImpl(
             movieDao.getFindMovies(name)
         }
         return Mapper.mapFindMoviesFromDb(favoriteMovie)
-
     }
 }
 

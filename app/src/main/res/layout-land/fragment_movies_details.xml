@@ -97,7 +97,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/movie_details_first_star_start_dimen"
-                android:src="@drawable/small_red"
                 app:layout_constraintLeft_toLeftOf="@id/textView_genre"
                 app:layout_constraintTop_toBottomOf="@id/textView_genre" />
 
@@ -107,7 +106,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/movie_details_second_star_start_dimen"
                 android:layout_marginTop="@dimen/movie_details_second_star_top_dimen"
-                android:src="@drawable/small_red"
                 app:layout_constraintStart_toEndOf="@+id/imageView_star_one"
                 app:layout_constraintTop_toBottomOf="@id/textView_genre" />
 
@@ -117,7 +115,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/movie_details_third_star_start_dimen"
                 android:layout_marginTop="@dimen/movie_details_third_star_top_dimen"
-                android:src="@drawable/small_red"
                 app:layout_constraintStart_toEndOf="@+id/imageView_star_two"
                 app:layout_constraintTop_toBottomOf="@id/textView_genre" />
 
@@ -127,7 +124,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/movie_details_four_star_start_dimen"
                 android:layout_marginTop="@dimen/movie_details_four_star_top_dimen"
-                android:src="@drawable/small_red"
                 app:layout_constraintStart_toEndOf="@+id/imageView_star_three"
                 app:layout_constraintTop_toBottomOf="@id/textView_genre" />
 
@@ -137,7 +133,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/movie_details_five_star_start_dimen"
                 android:layout_marginTop="@dimen/movie_details_five_star_top_dimen"
-                android:src="@drawable/small_red"
                 app:layout_constraintStart_toEndOf="@+id/imageView_star_four"
                 app:layout_constraintTop_toBottomOf="@id/textView_genre" />
 
@@ -157,7 +152,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/movie_details_story_line_top_dimen"
-                android:text="@string/story_title"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="@+id/imageView_star_one"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_star_one" />
@@ -175,7 +169,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/movie_details_cast_title_top_dimen"
-                android:text="@string/cast_title"
                 android:textSize="@dimen/movie_details_cast_title_size"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toLeftOf="@+id/textView_story"

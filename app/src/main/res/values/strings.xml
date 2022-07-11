@@ -30,5 +30,8 @@
     <string name="name_database">animals_database</string>
     <string name="search_error">Something went wrong </string>
     <string name="empty_result">No results matching your query</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="internet_error">Connection error, please turn on the Internet</string>
+
 
 </resources>

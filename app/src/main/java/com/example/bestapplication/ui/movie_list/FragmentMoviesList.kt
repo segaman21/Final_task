@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -42,6 +43,9 @@ class FragmentMoviesList : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initObservers()
+        viewModel.errorLiveData.observe(viewLifecycleOwner) {
+            Toast.makeText(context, getString(it), Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onDestroyView() {
