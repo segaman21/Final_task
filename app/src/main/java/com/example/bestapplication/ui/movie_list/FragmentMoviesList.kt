@@ -35,13 +35,12 @@ class FragmentMoviesList : DaggerFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentMoviesListBinding.inflate(inflater, container, false)
+        viewModel.getGenres()
+        viewModel.getFilms()
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel.getGenres()
-        viewModel.getFilms()
         initObservers()
     }
 

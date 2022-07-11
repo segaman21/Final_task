@@ -9,7 +9,7 @@ import com.example.bestapplication.network.NetworkApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class MoviesRepositoryImpl (private val api: NetworkApi) : MovieRepository {
+class MoviesRepositoryImpl(private val api: NetworkApi) : MovieRepository {
 
     private val lang = "en-US"
     private val apiKey = "641666dd6d279ab35afbe0cdfe384006"

@@ -73,4 +73,12 @@
     <dimen name="favorite_movie_item_size_genre_movie">10sp</dimen>
     <dimen name="favorite_movie_item_size_runtime_movie">10sp</dimen>
     <dimen name="favorite_movie_item_size_rating_movie">13sp</dimen>
+
+    <dimen name="search_movie_width_size">200dp</dimen>
+    <dimen name="search_movie_height_size">200dp</dimen>
+    <dimen name="search_movie_item_size_name_movie">15sp</dimen>
+    <dimen name="search_movie_placeholder_size">15sp</dimen>
+    <dimen name="search_movie_input_margin_size">16dp</dimen>
+    <dimen name="search_movie_input_height_size">70dp</dimen>
+    <dimen name="search_movie_padding">19dp</dimen>
 </resources>

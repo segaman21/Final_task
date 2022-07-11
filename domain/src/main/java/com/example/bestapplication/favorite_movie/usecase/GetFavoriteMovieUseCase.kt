@@ -6,4 +6,6 @@ class GetFavoriteMovieUseCase (private val movieRepository: FavoriteMovieReposit
 
     suspend fun invoke() = movieRepository.getFavoriteMovie()
 
+    suspend fun findMovie(name:String) = movieRepository.getFindMovie(name)
+
 }

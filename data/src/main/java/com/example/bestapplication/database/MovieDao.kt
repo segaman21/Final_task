@@ -16,5 +16,9 @@ interface MovieDao {
     suspend fun delete(movie: MovieDatabaseEntity)
 
     @Query("SELECT * FROM favorite_movie WHERE id=:movieId")
-    fun check(movieId:Int): MovieDatabaseEntity?
+    fun check(movieId: Int): MovieDatabaseEntity?
+
+    @Query("SELECT * FROM favorite_movie WHERE original_title LIKE '%' || :name || '%'")
+    fun getFindMovies(name: String): List<MovieDatabaseEntity>
+
 }

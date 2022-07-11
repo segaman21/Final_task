@@ -15,8 +15,16 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="TextAppearance.Movies.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5" >
+    <style name="TextAppearance.Movies.Toolbar.Text" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="SearchStyle">
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingStart">32dp</item>
+        <item name="android:paddingEnd">48dp</item>
+        <item name="android:hint">Enter search query</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>
