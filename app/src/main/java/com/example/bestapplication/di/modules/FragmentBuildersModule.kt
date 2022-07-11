@@ -1,6 +1,6 @@
 package com.example.bestapplication.di.modules
 
-import com.example.bestapplication.ui.ViewPagerFragment
+import com.example.bestapplication.ui.search_movie.SearchFragment
 import com.example.bestapplication.ui.favorite_movie.FragmentFavoriteMovies
 import com.example.bestapplication.ui.movie_details.FragmentMoviesDetails
 import com.example.bestapplication.ui.movie_list.FragmentMoviesList
@@ -20,5 +20,5 @@ abstract class FragmentBuildersModule {
     abstract fun contributeFragmentFavoriteMovies(): FragmentFavoriteMovies
 
     @ContributesAndroidInjector
-    abstract fun contributeViewPagerFragment(): ViewPagerFragment
+    abstract fun contributeSearchFragment(): SearchFragment
 }

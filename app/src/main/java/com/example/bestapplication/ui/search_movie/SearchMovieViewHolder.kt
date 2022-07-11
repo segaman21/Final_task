@@ -1,4 +1,4 @@
-package com.example.bestapplication.ui
+package com.example.bestapplication.ui.search_movie
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -8,7 +8,7 @@ import com.example.bestapplication.favorite_movie.entity.FavoriteMovie
 import com.example.bestapplication.utilites.Keys
 
 
-class MovieViewHolder(private val binding: SearchMovieItemBinding) :
+class SearchMovieViewHolder(private val binding: SearchMovieItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(movie: FavoriteMovie, listener: (FavoriteMovie) -> Unit) {

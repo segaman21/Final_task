@@ -1,11 +1,14 @@
 package com.example.bestapplication.ui.favorite_movie
 
+import android.util.Log
 import androidx.lifecycle.*
+import com.example.bestapplication.*
 import com.example.bestapplication.favorite_movie.entity.FavoriteMovie
 import com.example.bestapplication.favorite_movie.usecase.CheckMovieInDatabaseUseCase
 import com.example.bestapplication.favorite_movie.usecase.DeleteFromDataBaseUseCase
 import com.example.bestapplication.favorite_movie.usecase.GetFavoriteMovieUseCase
 import com.example.bestapplication.favorite_movie.usecase.InsertToDataBaseUseCase
+import com.example.bestapplication.utilites.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.ObsoleteCoroutinesApi
@@ -14,6 +17,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import kotlinx.serialization.ExperimentalSerializationApi
+import java.util.concurrent.CancellationException
 import javax.inject.Inject
 
 class FavoriteMovieViewModel @Inject constructor(
@@ -30,13 +34,8 @@ class FavoriteMovieViewModel @Inject constructor(
     private val _favoriteMovieLiveData = MutableLiveData<List<FavoriteMovie>>()
     val favoriteMovieLiveData: LiveData<List<FavoriteMovie>> get() = _favoriteMovieLiveData
 
-//    private val _findMovieLiveData = MutableLiveData<List<FavoriteMovie>>()
-//    val findMovieLiveData: LiveData<List<FavoriteMovie>> get() = _findMovieLiveData
-
-
     @OptIn(ObsoleteCoroutinesApi::class)
     val queryChannel = BroadcastChannel<String>(Channel.CONFLATED)
-
 
     @ExperimentalSerializationApi
     fun insertMovieToDatabase(movieId: Int) {
@@ -69,20 +68,27 @@ class FavoriteMovieViewModel @Inject constructor(
     private val _searchResult = queryChannel
         .asFlow()
         .debounce(500)
-        .mapLatest { search ->
-            getFavoriteMovieUseCase.findMovie(name = search)
+        .mapLatest {
+            if (it.isEmpty()) {
+                EmptyQuery
+            } else {
+                try {
+                    val result = getFavoriteMovieUseCase.findMovie(it)
+                    if (result.isEmpty()) {
+                        EmptyResult
+                    } else {
+                        ValidResult(result)
+                    }
+                } catch (e: Throwable) {
+                    if (e is CancellationException) {
+                        throw e
+                    } else {
+                        Log.w(FavoriteMovieViewModel::class.java.name, e)
+                        ErrorResult(e)
+                    }
+                }
+            }
         }
         .asLiveData(viewModelScope.coroutineContext)
-
-    val searchResult: LiveData<List<FavoriteMovie>> get() = _searchResult
-
-
-//
-//    fun findMovieInDatabase(name: String) {
-//        viewModelScope.launch {
-//            getFavoriteMovieUseCase.findMovie(name = name).collect {
-//                _findMovieLiveData.postValue(it)
-//            }
-//        }
-//    }
+    val searchResult: LiveData<MoviesResult> get() = _searchResult
 }

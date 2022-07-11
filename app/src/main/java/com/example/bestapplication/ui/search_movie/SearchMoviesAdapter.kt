@@ -1,4 +1,4 @@
-package com.example.bestapplication.ui
+package com.example.bestapplication.ui.search_movie
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,17 +7,17 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.bestapplication.databinding.SearchMovieItemBinding
 import com.example.bestapplication.favorite_movie.entity.FavoriteMovie
 
-class MoviesAdapter(private val listener: (FavoriteMovie) -> Unit) :
-    ListAdapter<FavoriteMovie, MovieViewHolder>(DIFF_CALLBACK) {
+class SearchMoviesAdapter(private val listener: (FavoriteMovie) -> Unit) :
+    ListAdapter<FavoriteMovie, SearchMovieViewHolder>(DIFF_CALLBACK) {
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchMovieViewHolder {
     val layoutInflater = LayoutInflater.from(parent.context)
     val binding = SearchMovieItemBinding.inflate(layoutInflater, parent, false)
-    return MovieViewHolder(binding)
+    return SearchMovieViewHolder(binding)
   }
 
-  override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-    holder.bind(getItem(position), listener)
+  override fun onBindViewHolder(holderSearch: SearchMovieViewHolder, position: Int) {
+    holderSearch.bind(getItem(position), listener)
   }
 
   companion object {

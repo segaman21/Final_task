@@ -32,4 +32,6 @@ class MovieDetailsViewModel @Inject constructor(
             _actorsLiveData.value = getActorUseCase.invoke(movieId)
         }
     }
+
+
 }
